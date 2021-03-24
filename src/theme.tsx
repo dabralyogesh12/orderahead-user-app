@@ -1,4 +1,4 @@
-import {createMuiTheme} from "@material-ui/core/styles";
+import { createMuiTheme } from "@material-ui/core/styles";
 // @ts-ignore
 import GtBoldTtf from "./fonts/GT-Walsheim-Bold.ttf";
 // @ts-ignore
