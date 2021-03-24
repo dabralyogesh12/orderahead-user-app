@@ -1,26 +1,69 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
+import { SnackbarProvider } from 'notistack';
+import { WithStyles, withStyles, createStyles } from '@material-ui/core';
+import { theme as Theme } from './theme';
+import DemoEvent from './features/event/DemoEvent';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const styles = (theme: typeof Theme) =>
+  createStyles({
+    success: {
+      backgroundColor: theme.palette.success.main,
+      left: '50%',
+      transform: 'translate(-50%, 0)',
+    },
+    error: {
+      backgroundColor: theme.palette.error.main,
+      left: '50%',
+      transform: 'translate(-50%, 0)',
+    },
+    warning: {
+      backgroundColor: theme.palette.warning.main,
+      left: '50%',
+      transform: 'translate(-50%, 0)',
+    },
+    info: {
+      backgroundColor: theme.palette.info.main,
+      left: '50%',
+      transform: 'translate(-50%, 0)',
+    },
+  });
+
+interface IState {}
+interface IProps extends WithStyles<typeof styles> {}
+
+class App extends Component<IProps, IState> {
+  constructor(props: IProps) {
+    super(props);
+    this.state = {};
+  }
+
+  render() {
+    const { classes } = this.props;
+    return (
+      <SnackbarProvider
+        classes={{
+          variantSuccess: classes.success,
+          variantError: classes.error,
+          variantWarning: classes.warning,
+          variantInfo: classes.info,
+        }}
+        maxSnack={3}
+      >
+        <div className="App">
+          {/* @ts-ignore */}
+
+          <Router>
+            <Switch>
+              <Route exact path="/demo_event" component={DemoEvent} />
+              <Route path="/" component={DemoEvent} />
+            </Switch>
+          </Router>
+        </div>
+      </SnackbarProvider>
+    );
+  }
 }
 
-export default App;
+export default withStyles(styles)(App);
