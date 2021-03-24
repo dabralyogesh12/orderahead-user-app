@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './App.scss';
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import { SnackbarProvider } from 'notistack';
 import { WithStyles, withStyles, createStyles } from '@material-ui/core';
