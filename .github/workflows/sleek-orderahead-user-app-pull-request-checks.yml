@@ -1,0 +1,21 @@
+name: Sleek Localty Frontend PR checks
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    container:
+      image: node
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install & Build
+        run: |
+          npm install
+          npm run build
+          npm run lint
+          npm run test

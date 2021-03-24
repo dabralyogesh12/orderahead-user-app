@@ -1,0 +1,6 @@
+ockerfile
+.dockerignore
+.eslintrc
+.gitignore
+README.md
+node_modules

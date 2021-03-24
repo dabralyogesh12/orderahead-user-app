@@ -1,0 +1,29 @@
+name: Sleek Localty Frontend CI/CD
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    container:
+      image: node
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install & Build
+        run: |
+          npm install
+          npm run build
+          npm run lint
+          npm run test
+      - uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: teamsleek/sleek-orderahead-user-app
+          tag_with_ref: true
+          tag_with_sha: true
