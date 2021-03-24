@@ -35,7 +35,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "CI=false react-scripts build",
-    "test": "react-scripts test --watchAll=false",
+    "test": "react-scripts test --watchAll=false --passWithNoTests",
     "eject": "react-scripts eject",
     "test:dev": "react-scripts test",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src --color --fix",
