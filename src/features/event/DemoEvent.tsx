@@ -1,23 +1,21 @@
-import React from "react";
-import Grid from "@material-ui/core/Grid";
-import DehazeIcon from "@material-ui/icons/Dehaze";
-import { RouteComponentProps } from "react-router-dom";
-import { WithStyles, withStyles, createStyles } from "@material-ui/core";
-import { theme as Theme } from "../../theme";
-import EventHeader from "./EventHeader";
-import SearchBar from "./SearchBar";
-import CategoriesScroll from "./CategoriesScroll";
+import React from 'react';
+import Grid from '@material-ui/core/Grid';
+import DehazeIcon from '@material-ui/icons/Dehaze';
+import { RouteComponentProps } from 'react-router-dom';
+import { WithStyles, withStyles, createStyles } from '@material-ui/core';
+import { theme as Theme } from '../../theme';
+import EventHeader from './EventHeader';
+import SearchBar from './SearchBar';
+import CategoriesScroll from './CategoriesScroll';
 
 const styles = (theme: typeof Theme) =>
   createStyles({
     root: {
-      height: "auto",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "flex-start",
-      width: "100%",
-      padding: theme.spacing(2),
+      height: 'auto',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      marginTop: theme.spacing(3)
     },
     headingRow: {},
     accountHeading: {},
@@ -37,14 +35,20 @@ class DemoEvent extends React.Component<IProps, IState> {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-        <Grid container>
-          <EventHeader
-            history={this.props.history}
-            location={this.props.location}
-            match={this.props.match}
-          />
-          <SearchBar />
-          <CategoriesScroll />
+        <Grid container justify="center">
+          <Grid item xs={10}>
+            <EventHeader
+              history={this.props.history}
+              location={this.props.location}
+              match={this.props.match}
+            />
+          </Grid>
+          <Grid item xs={10}>
+            <SearchBar />
+          </Grid>
+          <Grid item xs={10}>
+            <CategoriesScroll />
+          </Grid>
           <Grid
             container
             direction="row"
