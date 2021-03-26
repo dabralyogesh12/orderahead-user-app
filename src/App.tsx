@@ -6,6 +6,7 @@ import { WithStyles, withStyles, createStyles } from '@material-ui/core';
 import { theme as Theme } from './theme';
 import DemoEvent from './features/event/DemoEvent';
 
+
 const styles = (theme: typeof Theme) =>
   createStyles({
     success: {
