@@ -8,6 +8,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 import { WithStyles, withStyles, createStyles } from '@material-ui/core';
+
 import { theme as Theme } from '../../theme';
 import { getCategories } from '../../service';
 
@@ -20,24 +21,31 @@ const styles = (theme: typeof Theme) =>
       alignItems: 'center',
       justifyContent: 'flex-start',
       width: '100%',
+      boxShadow: 'inset 0px -1px 0px #E3E3E3',
+      borderRadius: '20px 20px 10px 10px',
     },
     scrollRoot: {
       flexGrow: 1,
       width: '100%',
-      backgroundColor: theme.palette.background.paper,
       marginTop: theme.spacing(2.5),
+      position: 'relative',
     },
     categoryWrapper: {
-      marginTop: theme.spacing(4)
+      marginTop: theme.spacing(4),
     },
     headingRow: {},
     accountHeading: {},
     logoImage: {
       marginRight: theme.spacing(2.5),
     },
+    appBarRoot: {
+      backgroundColor: 'transparent',
+    },
   });
 
-interface IProps extends WithStyles<typeof styles> {}
+interface IProps extends WithStyles<typeof styles> {
+  eventRef: React.RefObject<HTMLInputElement>;
+}
 
 interface IState {
   value: number;
@@ -58,41 +66,49 @@ class CategoriesScroll extends React.Component<IProps, IState> {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, eventRef } = this.props;
     const { value } = this.state;
     return (
       <div className={classes.root}>
-        <Grid container direction="column">
+        <Grid container direction="column" alignItems="center">
           <Grid
             item
-            xs={12}
+            xs={10}
             className={`${classes.categoryWrapper} startJustifiedFlex`}
+            container
           >
             <Typography variant="h6" display="inline">
               Categories
             </Typography>
           </Grid>
-          <div className={classes.scrollRoot}>
-            <AppBar position="static" color="default">
-              <Tabs
-                value={this.state.value}
-                onChange={(evt, newValue) => this.setValue(newValue)}
-                indicatorColor="primary"
-                textColor="primary"
-                variant="scrollable"
-                scrollButtons="auto"
-                aria-label="scrollable auto tabs example"
+          <Grid item xs={10} container>
+            <div className={classes.scrollRoot}>
+              <AppBar
+                position="static"
+                color="default"
+                elevation={0}
+                className={classes.appBarRoot}
               >
-                {this.state.categories.map((category) => (
-                  <Tab
-                    label={category.name}
-                    key={category.name}
-                    icon={<img src={category.image} />}
-                  />
-                ))}
-              </Tabs>
-            </AppBar>
-          </div>
+                <Tabs
+                  value={this.state.value}
+                  onChange={(evt, newValue) => this.setValue(newValue)}
+                  indicatorColor="primary"
+                  textColor="primary"
+                  variant="scrollable"
+                  scrollButtons="auto"
+                  aria-label="scrollable auto tabs example"
+                >
+                  {this.state.categories.map((category) => (
+                    <Tab
+                      label={category.name}
+                      key={category.name}
+                      icon={<img src={category.image} />}
+                    />
+                  ))}
+                </Tabs>
+              </AppBar>
+            </div>
+          </Grid>
         </Grid>
       </div>
     );

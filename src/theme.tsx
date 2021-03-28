@@ -68,7 +68,7 @@ export const theme = createMuiTheme({
     h5: {
       fontFamily: "GT-Walsheim, Roboto",
       fontWeight: "bold",
-      fontSize: "26px",
+      fontSize: "16px",
       lineHeight: "32px",
     },
     h6: {

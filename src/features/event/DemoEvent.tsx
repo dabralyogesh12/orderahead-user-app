@@ -7,6 +7,9 @@ import { theme as Theme } from '../../theme';
 import EventHeader from './EventHeader';
 import SearchBar from './SearchBar';
 import CategoriesScroll from './CategoriesScroll';
+import PlacesFilter from './PlacesFilter';
+import { event, stall } from '../../data/testData';
+import StallCard from './StallCard';
 
 const styles = (theme: typeof Theme) =>
   createStyles({
@@ -15,7 +18,6 @@ const styles = (theme: typeof Theme) =>
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      marginTop: theme.spacing(3)
     },
     headingRow: {},
     accountHeading: {},
@@ -23,18 +25,33 @@ const styles = (theme: typeof Theme) =>
 
 interface IProps extends WithStyles<typeof styles>, RouteComponentProps {}
 
-interface IState {}
+interface IState {
+  stalls: typeof stall[];
+}
 
 class DemoEvent extends React.Component<IProps, IState> {
+  eventContainerRef: React.RefObject<HTMLInputElement>;
+
   constructor(props: IProps) {
     super(props);
-    this.state = {};
+    this.state = {
+      stalls: [],
+    };
+    this.eventContainerRef = React.createRef();
   }
+
+  componentDidMount() {
+    this.getStalls();
+  }
+
+  getStalls = () => {
+    this.setState({ stalls: event.stalls });
+  };
 
   render() {
     const { classes } = this.props;
     return (
-      <div className={classes.root}>
+      <div className={classes.root} ref={this.eventContainerRef}>
         <Grid container justify="center">
           <Grid item xs={10}>
             <EventHeader
@@ -46,8 +63,16 @@ class DemoEvent extends React.Component<IProps, IState> {
           <Grid item xs={10}>
             <SearchBar />
           </Grid>
+          <Grid item xs={12}>
+            <CategoriesScroll eventRef={this.eventContainerRef} />
+          </Grid>
           <Grid item xs={10}>
-            <CategoriesScroll />
+            <PlacesFilter />
+          </Grid>
+          <Grid item xs={10} container direction="column">
+            {this.state.stalls.map((item) => (
+              <StallCard stall={item} key={stall._id} />
+            ))}
           </Grid>
           <Grid
             container
