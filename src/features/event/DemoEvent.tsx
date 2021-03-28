@@ -10,6 +10,7 @@ import CategoriesScroll from './CategoriesScroll';
 import PlacesFilter from './PlacesFilter';
 import { event, stall } from '../../data/testData';
 import StallCard from './StallCard';
+import WithNavigation from '../../components/BottomNavigationHoc';
 
 const styles = (theme: typeof Theme) =>
   createStyles({
@@ -86,4 +87,4 @@ class DemoEvent extends React.Component<IProps, IState> {
   }
 }
 
-export default withStyles(styles)(DemoEvent);
+export default WithNavigation(withStyles(styles)(DemoEvent));

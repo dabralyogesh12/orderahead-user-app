@@ -56,6 +56,7 @@ const styles = (theme: typeof Theme) =>
     },
     rightPane: {
       marginLeft: theme.spacing(2),
+      position: 'relative'
     },
     nameRow: {
       display: 'flex',
@@ -67,7 +68,9 @@ const styles = (theme: typeof Theme) =>
       display: 'flex',
       justifyContent: 'space-between',
       width: '100%',
-      alignItems: 'center',
+      alignItems: 'flex-end',
+      position: 'absolute',
+      bottom: 0
     },
     distanceIcon: {
       height: '16px',
@@ -147,9 +150,6 @@ class StallCard extends React.Component<IProps, IState> {
                 >
                   2 min
                 </Typography>
-                {/*<Icon classes={classes.restoreIcon}>*/}
-                {/*  restore_icon*/}
-                {/*</Icon>*/}
                 <RestoreIcon color="error" className={classes.restoreIcon}/>
                 <Typography
                   variant="body2"
