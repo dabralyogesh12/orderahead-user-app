@@ -11,7 +11,7 @@ const normalDollar = () => (
 
 export const GenerateExpenseLevel = (expenseLevel: number) => {
   let i = expenseLevel;
-  let j = 5 - expenseLevel;
+  let j = 3 - expenseLevel;
   const retVal = [];
   while (i > 0) {
     retVal.push(normalDollar());

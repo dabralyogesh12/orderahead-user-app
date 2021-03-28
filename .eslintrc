@@ -90,7 +90,8 @@
     "@typescript-eslint/dot-notation": "off",
     "react/jsx-curly-newline": "off",
     "@typescript-eslint/quotes": "off",
-    "spaced-comment": "off"
+    "spaced-comment": "off",
+    "import/extensions": "off"
   }
 }
 // no undersocre dangle had to be turned off because _id of business needed to be accessed which was throwing errors

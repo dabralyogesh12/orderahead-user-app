@@ -1,13 +1,11 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import DehazeIcon from '@material-ui/icons/Dehaze';
-import Typography from '@material-ui/core/Typography';
-import { RouteComponentProps } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 import { WithStyles, withStyles, createStyles } from '@material-ui/core';
+import Typography from '../../Typography.jsx';
 
 import { theme as Theme } from '../../theme';
 import { getCategories } from '../../service';
@@ -41,6 +39,9 @@ const styles = (theme: typeof Theme) =>
     appBarRoot: {
       backgroundColor: 'transparent',
     },
+    tabRoot: {
+      fontFamily: "Roboto"
+    }
   });
 
 interface IProps extends WithStyles<typeof styles> {
@@ -77,7 +78,8 @@ class CategoriesScroll extends React.Component<IProps, IState> {
             className={`${classes.categoryWrapper} startJustifiedFlex`}
             container
           >
-            <Typography variant="h6" display="inline">
+            {/* @ts-ignore */ }
+            <Typography variant="h4" roboto={true} display="inline">
               Categories
             </Typography>
           </Grid>
@@ -103,6 +105,7 @@ class CategoriesScroll extends React.Component<IProps, IState> {
                       label={category.name}
                       key={category.name}
                       icon={<img src={category.image} />}
+                      className={classes.tabRoot}
                     />
                   ))}
                 </Tabs>

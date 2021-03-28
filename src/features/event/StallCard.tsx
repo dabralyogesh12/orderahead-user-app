@@ -1,6 +1,5 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 import { WithStyles, withStyles, createStyles, Box, Icon } from '@material-ui/core';
 import RestoreIcon from '@material-ui/icons/Restore';
 import { IconContext } from 'react-icons';
@@ -9,6 +8,8 @@ import { GenerateExpenseLevel } from '../../utils';
 
 import { theme as Theme } from '../../theme';
 import { IStall } from '../../types';
+import Typography from "../../Typography";
+
 
 const styles = (theme: typeof Theme) =>
   createStyles({
@@ -116,7 +117,7 @@ class StallCard extends React.Component<IProps, IState> {
               </Box>
               <Box>
                 <img src="/img/star_icon.png" className={classes.starIcon} />
-                <Typography variant="body2" display="inline">
+                <Typography roboto={true} variant="body2" display="inline">
                   {stall.rating}
                 </Typography>
               </Box>
@@ -128,7 +129,7 @@ class StallCard extends React.Component<IProps, IState> {
               </Box>
               <Box>
                 <img src="/img/distance.svg" className={classes.distanceIcon} />
-                <Typography variant="body2" display="inline">
+                <Typography roboto={true} variant="body2" display="inline">
                   30ft
                 </Typography>
               </Box>
@@ -146,6 +147,7 @@ class StallCard extends React.Component<IProps, IState> {
                 <Typography
                   variant="body2"
                   display="inline"
+                  roboto={true}
                   style={{ color: Theme.palette.primary.main }}
                 >
                   2 min
@@ -154,6 +156,7 @@ class StallCard extends React.Component<IProps, IState> {
                 <Typography
                   variant="body2"
                   display="inline"
+                  roboto={true}
                   style={{ color: Theme.palette.error.main }}
                 >
                   54 min
