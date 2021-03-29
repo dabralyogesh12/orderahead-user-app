@@ -2,6 +2,8 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import { RouteComponentProps } from 'react-router-dom';
 import { WithStyles, withStyles, createStyles } from '@material-ui/core';
+import withWidth, { isWidthUp } from '@material-ui/core/withWidth';
+import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
 import Hidden from '@material-ui/core/Hidden';
 import { theme as Theme } from '../../theme';
 import EventHeader from './EventHeader';
@@ -21,6 +23,9 @@ const styles = (theme: typeof Theme) =>
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
+      [theme.breakpoints.down('lg')]: {
+        paddingTop: '28px',
+      },
     },
     headingRow: {},
     accountHeading: {},
@@ -32,7 +37,9 @@ const styles = (theme: typeof Theme) =>
     },
   });
 
-interface IProps extends WithStyles<typeof styles>, RouteComponentProps {}
+interface IProps extends WithStyles<typeof styles>, RouteComponentProps {
+  width: Breakpoint;
+}
 
 interface IState {
   stalls: typeof stall[];
@@ -60,7 +67,11 @@ class DemoEvent extends React.Component<IProps, IState> {
   render() {
     const { classes } = this.props;
     return (
-      <div className={classes.root} ref={this.eventContainerRef}>
+      <div
+        className={classes.root}
+        ref={this.eventContainerRef}
+        style={{ paddingTop: isWidthUp('lg', this.props.width) ? 0 : '28px' }}
+      >
         <Hidden mdDown>
           <DesktopHeader />
         </Hidden>
@@ -125,4 +136,4 @@ class DemoEvent extends React.Component<IProps, IState> {
   }
 }
 
-export default WithNavigation(withStyles(styles)(DemoEvent));
+export default withWidth()(WithNavigation(withStyles(styles)(DemoEvent)));
