@@ -78,6 +78,9 @@ const useStyles = makeStyles((theme: typeof Theme) =>
       height: '23px',
       width: '23px',
     },
+    toolbarRoot: {
+      height: '100%'
+    }
   })
 );
 
@@ -101,7 +104,7 @@ export default function DesktopHeader() {
   return (
     <div className={classes.grow}>
       <AppBar position="static" className={classes.appBarRoot}>
-        <Toolbar>
+        <Toolbar className={classes.toolbarRoot}>
           <IconButton
             edge="start"
             className={classes.menuButton}
