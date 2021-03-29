@@ -23,9 +23,6 @@ const styles = (theme: typeof Theme) =>
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      [theme.breakpoints.down('lg')]: {
-        paddingTop: '28px',
-      },
     },
     headingRow: {},
     accountHeading: {},
@@ -84,10 +81,9 @@ class DemoEvent extends React.Component<IProps, IState> {
             lg={4}
             className={classes.leftPane}
             style={{
-              height:
-                window.innerWidth < 1280
-                  ? 'calc(100vh - 60px)'
-                  : 'calc(100vh - 87px)',
+              height: isWidthUp('lg', this.props.width)
+                ? 'calc(100vh - 87px)'
+                : 'calc(100vh - 60px)',
             }}
           >
             <Hidden lgUp>
