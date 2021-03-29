@@ -9,7 +9,7 @@ function Typography(props) {
 
   return (
     <MuiTypography
-      style={{ fontFamily: roboto ? 'Roboto' : 'GT-Walsheim', ...style}}
+      style={{ fontFamily: roboto ? 'Roboto' : 'GT-Walsheim', ...style }}
       //@ts-ignore
       variant={variant}
       {...other}

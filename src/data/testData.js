@@ -291,6 +291,64 @@ export const stall2 = {
   },
   businessHours: {},
 };
+export const stall3 = {
+  _id: "5f400962f7c04e6925dc1645",
+  name: "demo stall two",
+  eventId: "5f3577a7405bae54c65239z9",
+  storeId: "5f3577a8405bae54c65239m8",
+  description: "Menu based on Haldiram India restaurant",
+  tag: [
+    {
+      _id: "5f3577a7405bae54c93648a8",
+      name: "Burgers",
+      type: "CUISINE",
+      status: "ACTIVE",
+      iconImagePath: "/img/tags/burgers.png",
+    },
+  ],
+  logoImagePath: "/img/auto_gen/download12.png",
+  bannerImagePath: "/img/auto_gen/ScreenShot2020-03-21at7.17.18PM.png",
+  expenseLevel: 2,
+  reviews: 20,
+  rating: 4.5,
+  pointOfSaleInfo: {
+    type: "SQUARE",
+    pointOfSaleAuthInfoId: "5f3577a3405bae54c6523715",
+    squareInfo: {
+      locationId: "GPQDQYYHBQ0G3",
+    },
+  },
+  businessHours: {},
+};
+export const stall4 = {
+  _id: "5f400962f7c04e6925dc1646",
+  name: "demo stall two",
+  eventId: "5f3577a7405bae54c65239z9",
+  storeId: "5f3577a8405bae54c65239m8",
+  description: "Menu based on Haldiram India restaurant",
+  tag: [
+    {
+      _id: "5f3577a7405bae54c93648a8",
+      name: "Burgers",
+      type: "CUISINE",
+      status: "ACTIVE",
+      iconImagePath: "/img/tags/burgers.png",
+    },
+  ],
+  logoImagePath: "/img/auto_gen/download12.png",
+  bannerImagePath: "/img/auto_gen/ScreenShot2020-03-21at7.17.18PM.png",
+  expenseLevel: 2,
+  reviews: 20,
+  rating: 4.5,
+  pointOfSaleInfo: {
+    type: "SQUARE",
+    pointOfSaleAuthInfoId: "5f3577a3405bae54c6523715",
+    squareInfo: {
+      locationId: "GPQDQYYHBQ0G3",
+    },
+  },
+  businessHours: {},
+};
 
 export const menu = {
   _id: "5f35c4dbec0310c59e8bf3e5",
@@ -1289,7 +1347,7 @@ export const event = {
   _id: "5f3577a7405bae54c65239b2",
   logoImagePath: "/img/themes/bottlerock/bottlerock.png",
   name: "Bottlerock",
-  stalls: [stall, stall2],
+  stalls: [stall, stall2, stall3, stall4],
 };
 
 export const script =

@@ -1,8 +1,8 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import DehazeIcon from '@material-ui/icons/Dehaze';
 import { RouteComponentProps } from 'react-router-dom';
 import { WithStyles, withStyles, createStyles } from '@material-ui/core';
+import Hidden from '@material-ui/core/Hidden';
 import { theme as Theme } from '../../theme';
 import EventHeader from './EventHeader';
 import SearchBar from './SearchBar';
@@ -11,6 +11,8 @@ import PlacesFilter from './PlacesFilter';
 import { event, stall } from '../../data/testData';
 import StallCard from './StallCard';
 import WithNavigation from '../../components/BottomNavigationHoc';
+import EventMap from './EventMap';
+import DesktopHeader from './DesktopHeader';
 
 const styles = (theme: typeof Theme) =>
   createStyles({
@@ -22,6 +24,12 @@ const styles = (theme: typeof Theme) =>
     },
     headingRow: {},
     accountHeading: {},
+    eventPane: {
+      maxHeight: '100%',
+    },
+    leftPane: {
+      overflow: 'scroll',
+    },
   });
 
 interface IProps extends WithStyles<typeof styles>, RouteComponentProps {}
@@ -53,34 +61,64 @@ class DemoEvent extends React.Component<IProps, IState> {
     const { classes } = this.props;
     return (
       <div className={classes.root} ref={this.eventContainerRef}>
-        <Grid container justify="center">
-          <Grid item xs={10}>
-            <EventHeader
-              history={this.props.history}
-              location={this.props.location}
-              match={this.props.match}
+        <Hidden mdDown>
+          <DesktopHeader />
+        </Hidden>
+        <Grid container direction="row">
+          <Grid
+            container
+            justify="center"
+            item
+            xs={12}
+            lg={4}
+            className={classes.leftPane}
+            style={{
+              height:
+                window.innerWidth < 1280
+                  ? 'calc(100vh - 60px)'
+                  : 'calc(100vh - 87px)',
+            }}
+          >
+            <Hidden lgUp>
+              <Grid item xs={10}>
+                <EventHeader
+                  history={this.props.history}
+                  location={this.props.location}
+                  match={this.props.match}
+                />
+              </Grid>
+            </Hidden>
+
+            <Grid item xs={10}>
+              <SearchBar />
+            </Grid>
+            <Grid item xs={12}>
+              <CategoriesScroll eventRef={this.eventContainerRef} />
+            </Grid>
+            <Grid item xs={10}>
+              <PlacesFilter />
+            </Grid>
+            <Grid item xs={10} container direction="column">
+              {this.state.stalls.map((item) => (
+                <StallCard stall={item} key={stall._id} />
+              ))}
+            </Grid>
+            <Grid
+              container
+              direction="row"
+              justify="center"
+              alignContent="center"
             />
-          </Grid>
-          <Grid item xs={10}>
-            <SearchBar />
-          </Grid>
-          <Grid item xs={12}>
-            <CategoriesScroll eventRef={this.eventContainerRef} />
-          </Grid>
-          <Grid item xs={10}>
-            <PlacesFilter />
-          </Grid>
-          <Grid item xs={10} container direction="column">
-            {this.state.stalls.map((item) => (
-              <StallCard stall={item} key={stall._id} />
-            ))}
           </Grid>
           <Grid
             container
-            direction="row"
             justify="center"
-            alignContent="center"
-          />
+            item
+            lg={8}
+            className={classes.eventPane}
+          >
+            <EventMap />
+          </Grid>
         </Grid>
       </div>
     );
