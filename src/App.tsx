@@ -5,6 +5,9 @@ import { SnackbarProvider } from 'notistack';
 import { WithStyles, withStyles, createStyles } from '@material-ui/core';
 import { theme as Theme } from './theme';
 import DemoEvent from './features/event/DemoEvent';
+import { StallMenu } from './features/stall/StallMenu';
+import AddedToCart from './features/stall/AddedToCart';
+import OrderSent from './features/stall/OrderSent';
 
 const styles = (theme: typeof Theme) =>
   createStyles({
@@ -57,6 +60,9 @@ class App extends Component<IProps, IState> {
           <Router>
             <Switch>
               <Route exact path="/demo_event" component={DemoEvent} />
+              <Route exact path="/stall/menu" component={StallMenu} />
+              <Route exact path="/stall/cart/added" component={AddedToCart} />
+              <Route exact path="/stall/order/sent" component={OrderSent} />
               <Route path="/" component={DemoEvent} />
             </Switch>
           </Router>
