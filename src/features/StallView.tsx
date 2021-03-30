@@ -2,6 +2,7 @@ import React from 'react';
 import { WithStyles, withStyles, createStyles } from '@material-ui/core';
 import { RouteComponentProps } from 'react-router-dom';
 // @ts-ignore
+// eslint-disable-next-line import/extensions
 import { theme as Theme } from '../MaterialTheme';
 
 const styles = (theme: typeof Theme) =>
