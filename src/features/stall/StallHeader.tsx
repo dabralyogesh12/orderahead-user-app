@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
+      color: 'red',
     },
     skipLine: {
       color: 'blue',
@@ -40,14 +41,14 @@ export const StallHeader = (props: IProps) => {
       <Grid container spacing={3}>
         <Grid item xs={4} className={classes.headerItem}>
           <Typography className={classes.skipLine}>
-            Skip the Line - ${props.skipLineTime}
+            Skip the Line - {props.skipLineTime} min
           </Typography>
         </Grid>
         <Grid item xs={4} className={classes.headerItem}>
           <img src={logo} alt="Stall Logo" />
         </Grid>
         <Grid item xs={4} className={classes.headerItem}>
-          <Typography>Standard Line - ${props.standardTime}</Typography>
+          <Typography>Standard Line - {props.standardTime} min</Typography>
         </Grid>
       </Grid>
     </div>

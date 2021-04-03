@@ -13,12 +13,15 @@ const useStyles = makeStyles((theme: Theme) =>
     paper: {
       height: '100%',
       width: '100%',
+      position: 'relative',
     },
     stallImg: {
       objectFit: 'cover',
       width: '100%',
       borderBottomLeftRadius: '10px',
       borderBottomRightRadius: '10px',
+      maxHeight: '40vh',
+      minHeight: '20vh',
     },
   })
 );

@@ -21,7 +21,7 @@ interface IProps {
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     cardGrid: {
-      marginTop: '10px',
+      marginTop: theme.spacing(3.8),
       border: '1px solid #E3E3E3',
       borderRadius: '10px',
     },
@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme: Theme) =>
       width: '100%',
       borderRadius: '10px',
       height: '100%',
+      boxShadow: '0px 15px 30px rgba(0, 0, 0, 0.05)',
     },
     details: {
       display: 'flex',
@@ -37,8 +38,13 @@ const useStyles = makeStyles((theme: Theme) =>
       width: '100%',
     },
     content: {
+      height: '100%',
       display: 'flex',
       flexDirection: 'column',
+      '&:last-child': {
+        paddingBottom: theme.spacing(1.2),
+      },
+      padding: theme.spacing(1.2),
     },
     cover: {
       width: '100%',
@@ -78,7 +84,11 @@ export default function ItemCard(props: IProps) {
         >
           <CardMedia
             className={classes.cover}
-            image={Espresso}
+            image={
+              props && props.itemDetails && props.itemDetails.imagePaths
+                ? props.itemDetails.imagePaths[0]
+                : ''
+            }
             title="Breakfast cover"
           />
         </div>
@@ -102,7 +112,7 @@ export default function ItemCard(props: IProps) {
             <Typography
               variant="body1"
               component="div"
-              style={{ fontWeight: 700 }}
+              style={{ fontWeight: 700, marginTop: 'auto' }}
             >
               $6
             </Typography>

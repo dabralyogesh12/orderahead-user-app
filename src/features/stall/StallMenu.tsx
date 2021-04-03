@@ -27,6 +27,7 @@ const useStyles = makeStyles((theme: Theme) =>
     headerpaper: {
       borderBottomLeftRadius: '10px',
       borderBottomRightRadius: '10px',
+      boxShadow: 'inset 0px -1px 0px #e3e3e3',
     },
     navGrid: {
       height: '10vh',
@@ -42,10 +43,20 @@ const useStyles = makeStyles((theme: Theme) =>
       background: '#F7F8FB',
       borderBottomLeftRadius: '10px',
       borderBottomRightRadius: '10px',
+      boxShadow: 'inset 0px -1px 0px #e3e3e3',
     },
     perItemGrid: {
-      marginTop: theme.spacing(6),
-      marginBottom: theme.spacing(6),
+      marginTop: theme.spacing(6.4),
+    },
+    itemswrapperGrid: {
+      zIndex: -3,
+      height: '100%',
+      width: '100%',
+      borderBottomLeftRadius: '10px',
+      borderBottomRightRadius: '10px',
+      background: '#F7F8FB',
+      marginTop: theme.spacing(-1),
+      paddingBottom: theme.spacing(6.2),
     },
   })
 );
@@ -82,32 +93,29 @@ export const StallMenu = () => {
           container
           xs={12}
           lg={12}
-          className={classes.navGrid}
-          style={{ zIndex: -3, height: '100%', width: '100%' }}
+          className={classes.itemswrapperGrid}
           justify="center"
           alignItems="center"
           direction="column"
         >
           <Grid
             container
-            xs={10}
-            lg={10}
+            xs={11}
+            lg={8}
             justify="center"
             direction="column"
             className={classes.perItemGrid}
           >
-            <Typography variant="h3">Bread</Typography>
             <ItemsSection itemsArray={categoryItems.items} />
           </Grid>
           <Grid
             container
-            xs={10}
-            lg={10}
+            xs={11}
+            lg={8}
             justify="center"
             direction="column"
             className={classes.perItemGrid}
           >
-            <Typography variant="h3">Bread</Typography>
             <ItemsSection itemsArray={categoryItems.items} />
           </Grid>
         </Grid>

@@ -12,13 +12,7 @@ import { Grid, Paper, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: {
-      height: '100vh',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
+    paper: { minWidth: '420px' },
     navigationRoot: {},
     paperRoot: {
       height: '88px',
@@ -34,7 +28,8 @@ const useStyles = makeStyles((theme: Theme) =>
       marginTop: 'auto',
     },
     textRoot: {
-      marginTop: theme.spacing(8),
+      marginTop: theme.spacing(8.2),
+      textAlign: 'center',
     },
     minorText: {
       maxWidth: '263px',
@@ -47,7 +42,6 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     orderButton: {
       borderRadius: '30px',
-
       marginBottom: theme.spacing(2),
     },
     upperhalfGrid: {
@@ -57,13 +51,15 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'flex',
       alignItems: 'center',
       color: ' #6D5CFF',
+      textAlign: 'center',
     },
     orderdetails: {
       marginTop: theme.spacing(2),
+      textAlign: 'center',
     },
     orderTimeGrid: {
-      marginTop: theme.spacing(5),
-      marginBottom: theme.spacing(5),
+      marginTop: theme.spacing(4),
+      marginBottom: theme.spacing(4),
     },
   })
 );
@@ -85,6 +81,8 @@ export default function OrderSent() {
         open={open}
         onClose={handleClose}
         aria-labelledby="responsive-dialog-title"
+        fullWidth
+        maxWidth="xs"
       >
         <Grid
           container
@@ -203,6 +201,7 @@ export default function OrderSent() {
               fullWidth
               variant="outlined"
               disableElevation={true}
+              color="primary"
             >
               New Order
             </Button>

@@ -28,9 +28,7 @@
         "type": "SQUARE",
         "squareInfo": { "inventoryItemId": "KRIASHUGDDYTP4IUJUU5K77V" }
       },
-      "imagePaths": [
-        "https://media-cdn.grubhub.com/image/upload/d_search:browse-images:default.jpg/r61roa3d1x4cvueszupr"
-      ]
+      "imagePaths": ["/img/Photo0.png"]
     },
     {
       "name": "Quesadilla",
@@ -59,9 +57,7 @@
         "type": "SQUARE",
         "squareInfo": { "inventoryItemId": "3VXGBHB3TCMB5LFJGHKE2MC4" }
       },
-      "imagePaths": [
-        "https://media-cdn.grubhub.com/image/upload/d_search:browse-images:default.jpg/txoclcy8q6s5trrhlrhk"
-      ]
+      "imagePaths": ["/img/Photo1.png"]
     },
     {
       "name": "Buffalo Chicken Quesadilla",
@@ -90,9 +86,7 @@
         "type": "SQUARE",
         "squareInfo": { "inventoryItemId": "G4NFXDVY4V7LC3E4D53O4K7Y" }
       },
-      "imagePaths": [
-        "https://media-cdn.grubhub.com/image/upload/d_search:browse-images:default.jpg/ktzz07l2yzcp47blknpp"
-      ]
+      "imagePaths": ["/img/Photo3.png"]
     },
     {
       "name": "Hollywood Square",
@@ -121,9 +115,7 @@
         "type": "SQUARE",
         "squareInfo": { "inventoryItemId": "3TUZQJQBE5LNENDTMRBSE4PD" }
       },
-      "imagePaths": [
-        "https://media-cdn.grubhub.com/image/upload/d_search:browse-images:default.jpg/ijsb9j5l80rbypbfqlx1"
-      ]
+      "imagePaths": ["/img/Photo3.png"]
     }
   ]
 }
