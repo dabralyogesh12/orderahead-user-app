@@ -96,7 +96,7 @@ class Event extends React.Component<IProps, IState> {
               </Grid>
             </Hidden>
 
-            <Grid item xs={10}>
+            <Grid item xs={12} container justify='center'>
               <SearchBar />
             </Grid>
             <Grid item xs={12}>

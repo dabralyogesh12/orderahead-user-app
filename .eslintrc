@@ -92,7 +92,8 @@
     "spaced-comment": "off",
     "import/extensions": "off",
     "react/static-property-placement": "off",
-    "react/prefer-stateless-function": "off"
+    "react/prefer-stateless-function": "off",
+    "@typescript-eslint/quotes": "off"
   }
 }
 // no undersocre dangle had to be turned off because _id of business needed to be accessed which was throwing errors
