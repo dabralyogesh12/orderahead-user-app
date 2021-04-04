@@ -44,7 +44,7 @@ const styles = (theme: typeof Theme) =>
     scrollRoot: {
       flexGrow: 1,
       width: '100%',
-      marginTop: theme.spacing(2.5),
+      marginTop: theme.spacing(1.5),
       position: 'relative',
     },
     categoryWrapper: {

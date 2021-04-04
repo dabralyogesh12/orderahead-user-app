@@ -25,7 +25,7 @@ const styles = (theme: typeof Theme) =>
       alignItems: 'center',
       justifyContent: 'flex-start',
       width: '100%',
-      marginTop: theme.spacing(4),
+      marginTop: theme.spacing(2.5),
       MuiInputRootUnderline: {
         border: 'none !important',
       },
