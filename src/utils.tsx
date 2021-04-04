@@ -2,11 +2,11 @@ import React from 'react';
 import { IStall } from './types';
 
 const greyedDollar = () => (
-  <span style={{ display: 'inline', color: '#979797' }}>$</span>
+  <span style={{ display: 'inline', color: '#979797', fontFamily: 'Roboto', fontSize: '14px' }}>$</span>
 );
 
 const normalDollar = () => (
-  <span style={{ display: 'inline', color: '#263238' }}>$</span>
+  <span style={{ display: 'inline', color: '#263238', fontFamily: 'Roboto', fontSize: '14px' }}>$</span>
 );
 
 export const GenerateExpenseLevel = (expenseLevel: number) => {

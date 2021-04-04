@@ -4,7 +4,7 @@ import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import { SnackbarProvider } from 'notistack';
 import { WithStyles, withStyles, createStyles } from '@material-ui/core';
 import { theme as Theme } from './theme';
-import DemoEvent from './features/event/DemoEvent';
+import Event from './features/event/Event';
 
 
 const styles = (theme: typeof Theme) =>
@@ -57,8 +57,8 @@ class App extends Component<IProps, IState> {
 
           <Router>
             <Switch>
-              <Route exact path="/demo_event" component={DemoEvent} />
-              <Route path="/" component={DemoEvent} />
+              <Route exact path="/demo_event" component={Event} />
+              <Route path="/" component={Event} />
             </Switch>
           </Router>
         </div>

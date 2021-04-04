@@ -1,4 +1,6 @@
 import { createMuiTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+
 // @ts-ignore
 import GtBoldTtf from './fonts/GT-Walsheim-Bold.ttf';
 // @ts-ignore
@@ -101,6 +103,13 @@ export const theme = createMuiTheme({
       lineHeight: '16px',
       color: 'rgba(151, 151, 151, 1)',
     },
+    subtitle1: {
+      fontFamily: 'GT-Walsheim, roboto',
+      fontWeight: 500,
+      fontSize: '12px',
+      lineHeight: '14px',
+      color: '#263238'
+    },
   },
 
   overrides: {
@@ -136,6 +145,11 @@ export const theme = createMuiTheme({
     MuiBottomNavigationAction: {
       root: {
         maxWidth: '33%',
+      },
+    },
+    MuiTab: {
+      root: {
+        width: '90px !important',
       },
     },
     MuiChip: {

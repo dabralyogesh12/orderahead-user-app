@@ -89,7 +89,6 @@
     }],
     "@typescript-eslint/dot-notation": "off",
     "react/jsx-curly-newline": "off",
-    "@typescript-eslint/quotes": "off",
     "spaced-comment": "off",
     "import/extensions": "off",
     "react/static-property-placement": "off",
