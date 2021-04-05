@@ -27,13 +27,14 @@ const useStyles = makeStyles((theme: Theme) =>
       alignItems: 'center',
       justifyContent: 'flex-end',
       background: 'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%)',
+      borderRadius: '10px',
     },
     ratingGrid: {
       width: '100%',
       display: 'flex',
       justifyContent: 'space-between',
       flexDirection: 'row',
-      marginBottom: theme.spacing(5),
+      marginBottom: theme.spacing(1.2),
     },
     nameDiv: {
       fontSize: '30px',
@@ -60,20 +61,6 @@ export const StallSummary = (props: IProps) => {
           justifyContent: 'flex-end',
         }}
       >
-        {/* <Grid
-          container
-          lg={12}
-          md={10}
-          xs={11}
-          style={{
-            width: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'flex-end',
-          }}
-        >
-          <Typography component="div">{props.stallName}</Typography>
-        </Grid> */}
         <Typography component="div" className={classes.nameDiv}>
           {props.stallName}
         </Typography>

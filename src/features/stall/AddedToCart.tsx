@@ -41,6 +41,7 @@ const useStyles = makeStyles((theme: Theme) =>
       fontWeight: 700,
     },
     plainCheckout: {
+      fontSize: '14px',
       borderStyle: 'none',
       color: 'red',
     },
@@ -50,6 +51,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     skipcheckout: {
       borderRadius: '30px',
+      fontSize: '14px',
     },
   })
 );
