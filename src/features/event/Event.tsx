@@ -98,7 +98,7 @@ class Event extends React.Component<IProps, IState> {
             <Grid item xs={12} container justify="center">
               <SearchBar />
             </Grid>
-            <Grid item xs={11}>
+            <Grid item xs={12}>
               <CategoriesScroll eventRef={this.eventContainerRef} />
             </Grid>
             <Grid item xs={11}>

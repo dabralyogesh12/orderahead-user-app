@@ -98,7 +98,7 @@ class CategoriesScroll extends React.Component<IProps, IState> {
         <Grid container direction="column" alignItems="center">
           <Grid
             item
-            xs={10}
+            xs={11}
             className={`${classes.categoryWrapper} startJustifiedFlex`}
             container
           >
@@ -107,7 +107,7 @@ class CategoriesScroll extends React.Component<IProps, IState> {
               Categories
             </Typography>
           </Grid>
-          <Grid item xs={10} container>
+          <Grid item xs={11} container>
             <div className={classes.scrollRoot}>
               <AppBar
                 position="static"
