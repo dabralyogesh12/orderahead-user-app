@@ -1,6 +1,4 @@
 import { createMuiTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-
 // @ts-ignore
 import GtBoldTtf from './fonts/GT-Walsheim-Bold.ttf';
 // @ts-ignore
@@ -62,19 +60,23 @@ export const theme = createMuiTheme({
       fontFamily: 'GT-Walsheim',
       fontWeight: 'bold',
     },
-
+    h3: {
+      fontFamily: 'GT-Walsheim',
+      fontWeight: 700,
+      fontSize: '30px',
+      lineHeight: '34.35px',
+    },
     h4: {
       fontFamily: 'GT-Walsheim, Roboto',
       fontWeight: 'bold',
       fontSize: '20px',
       lineHeight: '23px',
     },
-
     h5: {
       fontFamily: 'GT-Walsheim, Roboto',
       fontWeight: 'bold',
-      fontSize: '16px',
-      lineHeight: '18px',
+      fontSize: '26px',
+      lineHeight: '32px',
     },
 
     h6: {
@@ -84,7 +86,7 @@ export const theme = createMuiTheme({
     },
 
     body1: {
-      fontFamily: 'GT-Walsheim, Roboto',
+      fontFamily: 'GT-Walsheim, roboto',
       fontWeight: 'normal',
       fontSize: '16px',
       lineHeight: '24px',
