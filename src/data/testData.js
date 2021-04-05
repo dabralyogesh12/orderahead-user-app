@@ -2484,7 +2484,7 @@ export const userinfo = {
         },
       },
       pickupTime: '2020-12-30T11:28:13.502Z',
-      //here
+      // here
       receiptUrl:
         'https://squareupsandbox.com/receipt/preview/9m8S9lyzOMWvG8LR5PTMeRW6FgLZY',
       paymentMethod: 'CARD',

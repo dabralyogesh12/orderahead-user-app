@@ -107,6 +107,7 @@ const styles = (theme: typeof Theme) =>
     restoreIcon: {
       transform: 'scale(-1, -1)',
       marginLeft: theme.spacing(2),
+      height: '14px'
     },
   });
 
@@ -167,6 +168,7 @@ class StallCard extends React.Component<IProps, IState> {
                   value={{
                     color: Theme.palette.primary.main,
                     className: 'global-class-name',
+                    size: '14px'
                   }}
                 >
                   <IoFlashSharp />
