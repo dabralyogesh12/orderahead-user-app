@@ -4,7 +4,8 @@ import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import { SnackbarProvider } from 'notistack';
 import { WithStyles, withStyles, createStyles } from '@material-ui/core';
 import { theme as Theme } from './theme';
-import DemoEvent from './features/event/DemoEvent';
+import Event from './features/event/Event';
+
 import { StallMenu } from './features/stall/StallMenu';
 import AddedToCart from './features/stall/AddedToCart';
 import OrderSent from './features/stall/OrderSent';
@@ -59,11 +60,11 @@ class App extends Component<IProps, IState> {
 
           <Router>
             <Switch>
-              <Route exact path="/demo_event" component={DemoEvent} />
+              <Route exact path="/event" component={Event} />
               <Route exact path="/stall/menu" component={StallMenu} />
               <Route exact path="/stall/cart/added" component={AddedToCart} />
               <Route exact path="/stall/order/sent" component={OrderSent} />
-              <Route path="/" component={DemoEvent} />
+              <Route path="/" component={Event} />
             </Switch>
           </Router>
         </div>

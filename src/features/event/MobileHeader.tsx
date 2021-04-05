@@ -1,18 +1,18 @@
-import React from "react";
-import Grid from "@material-ui/core/Grid";
-import DehazeIcon from "@material-ui/icons/Dehaze";
-import { RouteComponentProps } from "react-router-dom";
-import { WithStyles, withStyles, createStyles } from "@material-ui/core";
-import { theme as Theme } from "../../theme";
+import React from 'react';
+import Grid from '@material-ui/core/Grid';
+import DehazeIcon from '@material-ui/icons/Dehaze';
+import { RouteComponentProps } from 'react-router-dom';
+import { WithStyles, withStyles, createStyles } from '@material-ui/core';
+import { theme as Theme } from '../../theme';
 
 const styles = (theme: typeof Theme) =>
   createStyles({
     root: {
-      height: "auto",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "flex-start",
+      height: 'auto',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'flex-start',
       width: '100%'
     },
     headingRow: {},
@@ -26,7 +26,7 @@ interface IProps extends WithStyles<typeof styles>, RouteComponentProps {}
 
 interface IState {}
 
-class EventHeader extends React.Component<IProps, IState> {
+class MobileHeader extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
     this.state = {};
@@ -50,4 +50,4 @@ class EventHeader extends React.Component<IProps, IState> {
   }
 }
 
-export default (withStyles(styles)(EventHeader));
+export default (withStyles(styles)(MobileHeader));

@@ -55,6 +55,7 @@ export const theme = createMuiTheme({
       fontFamily: 'GT-Walsheim',
       fontWeight: 'bold',
     },
+
     h2: {
       fontFamily: 'GT-Walsheim',
       fontWeight: 'bold',
@@ -77,11 +78,13 @@ export const theme = createMuiTheme({
       fontSize: '26px',
       lineHeight: '32px',
     },
+
     h6: {
       fontFamily: 'GT-Walsheim, Roboto',
       fontWeight: 'normal',
       fontSize: '22px',
     },
+
     body1: {
       fontFamily: 'GT-Walsheim, roboto',
       fontWeight: 'normal',
@@ -102,7 +105,15 @@ export const theme = createMuiTheme({
       lineHeight: '16px',
       color: 'rgba(151, 151, 151, 1)',
     },
+    subtitle1: {
+      fontFamily: 'GT-Walsheim, roboto',
+      fontWeight: 500,
+      fontSize: '12px',
+      lineHeight: '14px',
+      color: '#263238'
+    },
   },
+
   overrides: {
     MuiCssBaseline: {
       '@global': {
@@ -136,6 +147,11 @@ export const theme = createMuiTheme({
     MuiBottomNavigationAction: {
       root: {
         maxWidth: '33%',
+      },
+    },
+    MuiTab: {
+      root: {
+        width: '90px !important',
       },
     },
     MuiChip: {

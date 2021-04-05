@@ -1,4 +1,3 @@
-
 .endJustifiedFlex {
   display: flex;
   align-items: center;
@@ -11,3 +10,9 @@
   justify-content: flex-start;
 }
 
+body,
+html {
+  background-color: #f7f8fb;
+}
+.App {
+}
