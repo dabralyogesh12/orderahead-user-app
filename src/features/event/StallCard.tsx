@@ -38,7 +38,7 @@ const styles = (theme: typeof Theme) =>
       cursor: 'pointer',
       '&:hover': {
         border: `1px solid ${Theme.palette.primary.main}`,
-        '& h5': {
+        '& h4': {
           color: theme.palette.primary.main,
         },
       },
@@ -135,7 +135,7 @@ class StallCard extends React.Component<IProps, IState> {
             <Box className={classes.nameRow}>
               <Box>
                 <Typography
-                  variant="h5"
+                  variant="h4"
                   display="inline"
                   className={classes.stallName}
                 >
