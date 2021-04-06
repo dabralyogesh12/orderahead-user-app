@@ -12,7 +12,7 @@ import InputBase from '@material-ui/core/InputBase';
 import get from 'lodash/get';
 import IconButton from '@material-ui/core/IconButton';
 import withWidth from '@material-ui/core/withWidth';
-import { withStyles } from '@material-ui/core';
+import { Input, withStyles } from '@material-ui/core';
 import scriptLoader from 'react-async-script-loader';
 import { isDesktop } from '../../utils';
 import config from '../../config';
@@ -52,9 +52,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export interface IProps {
-  isScriptLoaded: boolean;
-}
+export interface IProps {}
 
 const GoogleMaps = (props: IProps) => {
   const classes = useStyles();
@@ -77,16 +75,19 @@ const GoogleMaps = (props: IProps) => {
     let active = true;
     // @ts-ignore
     if (!autocompleteService.current && window.google) {
+      console.log('here');
       // @ts-ignore
       autocompleteService.current = new window.google.maps.places.AutocompleteService();
     }
     if (!autocompleteService.current) {
+      console.log('here1');
       return undefined;
     }
 
     if (inputValue === '') {
       // @ts-ignore
       setOptions(value ? [value] : []);
+      console.log('here3');
       return undefined;
     }
 
@@ -116,130 +117,118 @@ const GoogleMaps = (props: IProps) => {
     return () => {
       active = false;
     };
-  }, [value, inputValue, fetch]);
+  }, []);
 
   return (
     <Grid container direction="row">
-      {props.isScriptLoaded ? (
-        <Grid item xs={12}>
-          <Autocomplete
-            fullWidth
+      <Grid item xs={12}>
+        <Autocomplete
+          fullWidth
+          // @ts-ignore
+          getOptionLabel={(option) =>
             // @ts-ignore
-            getOptionLabel={(option) =>
-              // @ts-ignore
-              typeof option === 'string' ? option : option.description
-            }
+            typeof option === 'string' ? option : option.description
+          }
+          // @ts-ignore
+          value={value}
+          style={{ width: '100%' }}
+          options={options}
+          includeInputInList
+          filterSelectedOptions
+          onChange={(event, newValue) => {
             // @ts-ignore
-            onChange={(event, newValue) => {
-              // @ts-ignore
-              setOptions(newValue ? [newValue, ...options] : options);
-              setValue(newValue);
-            }}
-            // @ts-ignore
-            onInputChange={(event, newInputValue) => {
-              setInputValue(newInputValue);
-            }}
-            value={value}
-            style={{ width: '100%' }}
-            options={options}
-            includeInputInList
-            filterSelectedOptions
-            // @ts-ignore
-            renderInput={(params) => (
-              <Grid container>
-                <Grid
-                  container
-                  direction="row"
-                  className={classes.InputContainer}
-                  ref={params.InputProps.ref}
-                >
+            setOptions(newValue ? [newValue, ...options] : options);
+            setValue(newValue);
+          }}
+          // @ts-ignore
+          onInputChange={(event, newInputValue) => {
+            setInputValue(newInputValue);
+          }}
+          // @ts-ignore
+          // @ts-ignore
+          renderInput={(params) => (
+            <TextField
+              required
+              {...params}
+              label="Address"
+              fullWidth
+              autoComplete="false"
+              InputProps={{
+                startAdornment: (
                   <IconButton className={classes.iconButton} aria-label="menu">
                     <img src="/img/search_adorn_start.png" />
                   </IconButton>
-                  <InputBase
-                    className={classes.textInput}
-                    placeholder="Times Square, Manhattan, NY..."
-                    {...params.inputProps}
-                    // @ts-ignore
-                  />
-                  {!isDesktop() && (
-                    <IconButton
-                      type="submit"
-                      className={classes.iconButton}
-                      aria-label="search"
+                ),
+                endAdornment: !isDesktop() ? (
+                  <IconButton
+                    type="submit"
+                    className={classes.iconButton}
+                    aria-label="search"
+                  >
+                    <img src="/img/input_adorn_end.png" />
+                  </IconButton>
+                ) : null,
+              }}
+            />
+          )}
+          // @ts-ignore
+          renderOption={(option) => ''}
+        />
+        <Grid item xs={12} container className={classes.optionContainer}>
+          {options.map((option, key) => {
+            const matches =
+              // @ts-ignore
+              option.structured_formatting.main_text_matched_substrings;
+            const parts = parse(
+              // @ts-ignore
+              option.structured_formatting.main_text,
+              // @ts-ignore
+              matches.map((match) => [
+                match.offset,
+                match.offset + match.length,
+              ])
+            );
+
+            // @ts-ignore
+            console.log('option', option);
+            return (
+              <Grid
+                // @ts-ignore
+                onClick={() => {
+                  console.log('option', option);
+                }}
+                container
+                alignItems="center"
+                key={key}
+                className={classes.optionRow}
+              >
+                <Grid item>
+                  <LocationOnIcon className={classes.icon} />
+                </Grid>
+                <Grid item xs>
+                  {/* @ts-ignore */}
+                  {parts.map((part, index) => (
+                    <span
+                      // eslint-disable-next-line react/no-array-index-key
+                      key={index}
+                      style={{ fontWeight: part.highlight ? 700 : 400 }}
                     >
-                      <img src="/img/input_adorn_end.png" />
-                    </IconButton>
-                  )}
+                      {part.text}
+                    </span>
+                  ))}
+
+                  <Typography variant="body2" color="textSecondary">
+                    {/* @ts-ignore */}
+                    {option.structured_formatting.secondary_text}
+                  </Typography>
                 </Grid>
               </Grid>
-            )}
-            // @ts-ignore
-            renderOption={(option) => {
-              const matches =
-                // @ts-ignore
-                option.structured_formatting.main_text_matched_substrings;
-              const parts = parse(
-                // @ts-ignore
-                option.structured_formatting.main_text,
-                // @ts-ignore
-                matches.map((match) => [
-                  match.offset,
-                  match.offset + match.length,
-                ])
-              );
-
-              // @ts-ignore
-              console.log('option', option);
-              return (
-                <Grid
-                  // @ts-ignore
-                  onClick={() => {
-                    console.log('option', option);
-                  }}
-                  container
-                  item
-                  xs={12}
-                  alignItems="center"
-                  className={classes.optionRow}
-                >
-                  <Grid item>
-                    <LocationOnIcon className={classes.icon} />
-                  </Grid>
-                  <Grid item xs>
-                    {/* @ts-ignore */}
-                    {parts.map((part, index) => (
-                      <span
-                        // eslint-disable-next-line react/no-array-index-key
-                        key={index}
-                        style={{ fontWeight: part.highlight ? 700 : 400 }}
-                      >
-                        {part.text}
-                      </span>
-                    ))}
-
-                    <Typography variant="body2" color="textSecondary">
-                      {/* @ts-ignore */}
-                      {option.structured_formatting.secondary_text}
-                    </Typography>
-                  </Grid>
-                </Grid>
-              );
-            }}
-          />
+            );
+          })}
         </Grid>
-      ) : (
-        <Grid item />
-      )}
+      </Grid>
     </Grid>
   );
 };
 
-export default // @ts-ignore
-scriptLoader(
-  [
-    `https://maps.googleapis.com/maps/api/js?key=${config.REACT_APP_GOOGLE_API_KEY}&libraries=places`,
-  ],
-  '/assets/bootstrap-markdown.js'
-  // @ts-ignore
-)(GoogleMaps);
+export default GoogleMaps;
