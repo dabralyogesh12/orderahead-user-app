@@ -16,3 +16,10 @@ html {
 }
 .App {
 }
+.MuiInput-underline{
+  border: none !important;
+}
+
+.MuiInputBase-root .InputBase-adornedStart .MuiInputBase-adornedEnd{
+  height: 100% !important;
+}

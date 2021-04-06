@@ -3,6 +3,8 @@ import Grid from '@material-ui/core/Grid';
 import { RouteComponentProps } from 'react-router-dom';
 import { WithStyles, withStyles, createStyles } from '@material-ui/core';
 import withWidth, { isWidthUp } from '@material-ui/core/withWidth';
+import scriptLoader from 'react-async-script-loader';
+import Paper from '@material-ui/core/Paper';
 import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
 import Hidden from '@material-ui/core/Hidden';
 import { theme as Theme } from '../../theme';
@@ -16,6 +18,8 @@ import WithNavigation from '../../components/BottomNavigationHoc';
 import EventMap from './EventMap';
 import DesktopHeader from './DesktopHeader';
 import { isDesktop } from '../../utils';
+import AutoCompleteService from './AutoCompleteService';
+import config from '../../config';
 
 const styles = (theme: typeof Theme) =>
   createStyles({
@@ -26,6 +30,16 @@ const styles = (theme: typeof Theme) =>
       alignItems: 'center',
       paddingBottom: theme.spacing(2),
       paddingTop: isDesktop() ? 0 : '28px',
+    },
+    paperRoot: {
+      padding: '2px 4px',
+      display: 'flex',
+      alignItems: 'center',
+      width: '100%',
+      marginTop: theme.spacing(4),
+      border: isDesktop() ? 'none' : '1px solid #E3E3E3',
+      boxSizing: 'border-box',
+      borderRadius: isDesktop() ? 'none' : '8px',
     },
     headingRow: {},
     accountHeading: {},
@@ -96,7 +110,38 @@ class Event extends React.Component<IProps, IState> {
             </Hidden>
 
             <Grid item xs={12} container justify="center">
-              <SearchBar />
+              <Grid item container xs={isDesktop()? 12: 11}>
+                <Paper
+                  component="form"
+                  className={classes.paperRoot}
+                  elevation={0}
+                  style={{
+                    backgroundImage: isDesktop()
+                      ? `url('img/EventBackground.png')`
+                      : 'none',
+                    height: isDesktop() ? '280px' : 'auto',
+                    position: isDesktop() ? 'relative' : 'inherit',
+                    marginTop: isDesktop() ? 0 : Theme.spacing(4),
+                  }}
+                >
+                  <Grid
+                    container
+                    direction="row"
+                    item
+                    xs={11}
+                    style={{
+                      position: isDesktop() ? 'absolute' : 'inherit',
+                      top: isDesktop() ? '30px' : 'inherit',
+                      left: isDesktop() ? '50%' : 'inherit',
+                      transform: isDesktop() ? 'translate(-50%, 0)' : 'inherit',
+                      borderRadius: isDesktop() ? '8px' : 'none',
+                      background: '#FFFFFF'
+                    }}
+                  >
+                    <AutoCompleteService />
+                  </Grid>
+                </Paper>
+              </Grid>
             </Grid>
             <Grid item xs={12}>
               <CategoriesScroll eventRef={this.eventContainerRef} />
@@ -131,4 +176,7 @@ class Event extends React.Component<IProps, IState> {
   }
 }
 
-export default withWidth()(WithNavigation(withStyles(styles)(Event)));
+export default withWidth()(
+  // @ts-ignore
+  withStyles(styles)(WithNavigation(Event))
+);

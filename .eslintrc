@@ -58,7 +58,7 @@
     ],
     "react/jsx-key": "error",
     "import/no-extraneous-dependencies": [
-      "error",
+      "warn",
       {
         "devDependencies": [
           "**/*.test.js",
@@ -92,7 +92,9 @@
     // the stateless function rule is unusually restrict
     "react/prefer-stateless-function": "off",
     // unusually retrict
-    "react/static-property-placement": "off"
+    "react/static-property-placement": "off",
+    "react/no-array-index-key": "off"
+    // some proble with react project
 
   }
 }

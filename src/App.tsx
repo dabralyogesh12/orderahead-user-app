@@ -9,6 +9,7 @@ import Event from './features/event/Event';
 import { StallMenu } from './features/stall/StallMenu';
 import AddedToCart from './features/stall/AddedToCart';
 import OrderSent from './features/stall/OrderSent';
+import MapView from './features/event/MapView';
 
 const styles = (theme: typeof Theme) =>
   createStyles({
@@ -64,6 +65,7 @@ class App extends Component<IProps, IState> {
               <Route exact path="/stall/menu" component={StallMenu} />
               <Route exact path="/stall/cart/added" component={AddedToCart} />
               <Route exact path="/stall/order/sent" component={OrderSent} />
+              <Route exact path="/map" component={MapView} />
               <Route path="/" component={Event} />
             </Switch>
           </Router>

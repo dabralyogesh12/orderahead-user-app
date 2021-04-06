@@ -37,17 +37,17 @@ export default function BottomNavigationBar(props: IProps) {
     >
       <BottomNavigationAction
         className={classes.navigationAction}
-        label="Dashboard"
+        label="Browse"
         icon={<img src="/img/shifty_eyes.svg" />}
       />
       <BottomNavigationAction
         className={classes.navigationAction}
-        label="Browse"
+        label="Map View"
         icon={<img src="/img/map_icon.svg" />}
       />
       <BottomNavigationAction
         className={classes.navigationAction}
-        label="My Profile"
+        label="Cart"
         icon={<img src="/img/cart_icon.svg" />}
       />
     </BottomNavigation>
