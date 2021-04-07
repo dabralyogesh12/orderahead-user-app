@@ -1,44 +1,37 @@
-import React, { Component } from 'react';
-import GoogleMapReact from 'google-map-react';
-import { createStyles, withStyles, WithStyles } from '@material-ui/core';
-import { theme as Theme } from '../../theme';
+import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
+import React from 'react';
+import { WithStyles } from '@material-ui/core';
+import { RouteComponentProps } from 'react-router-dom';
+import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
+import { stall } from '../../data/testData';
 import config from '../../config';
 
-const styles = (theme: typeof Theme) =>
-  createStyles({
-    root: {
-      height: 'auto',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-    },
-    headingRow: {},
-    accountHeading: {},
-  });
-
-interface IProps extends WithStyles<typeof styles> {
-  center: { lat: number; lng: number };
-  zoom: number;
+interface IProps extends RouteComponentProps {
+  width: Breakpoint;
 }
 
-interface IState {}
+interface IState {
+  stalls: typeof stall[];
+}
 
-class EventMap extends React.Component<IProps, IState> {
-  public static defaultProps = {
-    center: { lat: 37.7739, lng: -122.4312 },
-    zoom: 14,
-  };
-
+export class EventMap extends React.Component<IProps, IState> {
   render() {
     return (
-      <GoogleMapReact
-        bootstrapURLKeys={{ key: config.REACT_APP_GOOGLE_API_KEY || '' }}
-        defaultCenter={this.props.center}
-        defaultZoom={this.props.zoom}
+      // @ts-ignore
+      <Map
+        // @ts-ignore
+        google={this.props.google}
+        // @ts-ignore
+        zoom={14}
+        containerStyle={{ width: '100%', height: '100%', position: 'static' }}
+        style={{ width: '100%', height: '100%' }}
       />
     );
   }
 }
 
-export default withStyles(styles)(EventMap);
-
+export default GoogleApiWrapper({
+  // @ts-ignore
+  apiKey: config.REACT_APP_GOOGLE_API_KEY,
+  // @ts-ignore
+})(EventMap);

@@ -52,9 +52,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export interface IProps {
-  isScriptLoaded: boolean;
-}
+export interface IProps {}
 
 const GoogleMaps = (props: IProps) => {
   const classes = useStyles();
@@ -120,126 +118,115 @@ const GoogleMaps = (props: IProps) => {
 
   return (
     <Grid container direction="row">
-      {props.isScriptLoaded ? (
-        <Grid item xs={12}>
-          <Autocomplete
-            fullWidth
+      <Grid item xs={12}>
+        <Autocomplete
+          fullWidth
+          // @ts-ignore
+          getOptionLabel={(option) =>
             // @ts-ignore
-            getOptionLabel={(option) =>
-              // @ts-ignore
-              typeof option === 'string' ? option : option.description
-            }
+            typeof option === 'string' ? option : option.description
+          }
+          // @ts-ignore
+          onChange={(event, newValue) => {
             // @ts-ignore
-            onChange={(event, newValue) => {
-              // @ts-ignore
-              setOptions(newValue ? [newValue, ...options] : options);
-              setValue(newValue);
-            }}
-            // @ts-ignore
-            onInputChange={(event, newInputValue) => {
-              setInputValue(newInputValue);
-            }}
-            value={value}
-            style={{ width: '100%' }}
-            options={options}
-            includeInputInList
-            filterSelectedOptions
-            // @ts-ignore
-            renderInput={(params) => (
-              <Grid container>
-                <Grid
-                  container
-                  direction="row"
-                  className={classes.InputContainer}
-                  ref={params.InputProps.ref}
-                >
-                  <IconButton className={classes.iconButton} aria-label="menu">
-                    <img src="/img/search_adorn_start.png" />
+            setOptions(newValue ? [newValue, ...options] : options);
+            setValue(newValue);
+          }}
+          // @ts-ignore
+          onInputChange={(event, newInputValue) => {
+            setInputValue(newInputValue);
+          }}
+          value={value}
+          style={{ width: '100%' }}
+          options={options}
+          includeInputInList
+          filterSelectedOptions
+          // @ts-ignore
+          renderInput={(params) => (
+            <Grid container>
+              <Grid
+                container
+                direction="row"
+                className={classes.InputContainer}
+                ref={params.InputProps.ref}
+              >
+                <IconButton className={classes.iconButton} aria-label="menu">
+                  <img src="/img/search_adorn_start.png" />
+                </IconButton>
+                <InputBase
+                  className={classes.textInput}
+                  placeholder="Times Square, Manhattan, NY..."
+                  {...params.inputProps}
+                  // @ts-ignore
+                />
+                {!isDesktop() && (
+                  <IconButton
+                    type="submit"
+                    className={classes.iconButton}
+                    aria-label="search"
+                  >
+                    <img src="/img/input_adorn_end.png" />
                   </IconButton>
-                  <InputBase
-                    className={classes.textInput}
-                    placeholder="Times Square, Manhattan, NY..."
-                    {...params.inputProps}
-                    // @ts-ignore
-                  />
-                  {!isDesktop() && (
-                    <IconButton
-                      type="submit"
-                      className={classes.iconButton}
-                      aria-label="search"
+                )}
+              </Grid>
+            </Grid>
+          )}
+          // @ts-ignore
+          renderOption={(option) => {
+            const matches =
+              // @ts-ignore
+              option.structured_formatting.main_text_matched_substrings;
+            const parts = parse(
+              // @ts-ignore
+              option.structured_formatting.main_text,
+              // @ts-ignore
+              matches.map((match) => [
+                match.offset,
+                match.offset + match.length,
+              ])
+            );
+
+            // @ts-ignore
+            console.log('option', option);
+            return (
+              <Grid
+                // @ts-ignore
+                onClick={() => {
+                  console.log('option', option);
+                }}
+                container
+                item
+                xs={12}
+                alignItems="center"
+                className={classes.optionRow}
+              >
+                <Grid item>
+                  <LocationOnIcon className={classes.icon} />
+                </Grid>
+                <Grid item xs>
+                  {/* @ts-ignore */}
+                  {parts.map((part, index) => (
+                    <span
+                      // eslint-disable-next-line react/no-array-index-key
+                      key={index}
+                      style={{ fontWeight: part.highlight ? 700 : 400 }}
                     >
-                      <img src="/img/input_adorn_end.png" />
-                    </IconButton>
-                  )}
+                      {part.text}
+                    </span>
+                  ))}
+
+                  <Typography variant="body2" color="textSecondary">
+                    {/* @ts-ignore */}
+                    {option.structured_formatting.secondary_text}
+                  </Typography>
                 </Grid>
               </Grid>
-            )}
-            // @ts-ignore
-            renderOption={(option) => {
-              const matches =
-                // @ts-ignore
-                option.structured_formatting.main_text_matched_substrings;
-              const parts = parse(
-                // @ts-ignore
-                option.structured_formatting.main_text,
-                // @ts-ignore
-                matches.map((match) => [
-                  match.offset,
-                  match.offset + match.length,
-                ])
-              );
-
-              // @ts-ignore
-              console.log('option', option);
-              return (
-                <Grid
-                  // @ts-ignore
-                  onClick={() => {
-                    console.log('option', option);
-                  }}
-                  container
-                  item
-                  xs={12}
-                  alignItems="center"
-                  className={classes.optionRow}
-                >
-                  <Grid item>
-                    <LocationOnIcon className={classes.icon} />
-                  </Grid>
-                  <Grid item xs>
-                    {/* @ts-ignore */}
-                    {parts.map((part, index) => (
-                      <span
-                        // eslint-disable-next-line react/no-array-index-key
-                        key={index}
-                        style={{ fontWeight: part.highlight ? 700 : 400 }}
-                      >
-                        {part.text}
-                      </span>
-                    ))}
-
-                    <Typography variant="body2" color="textSecondary">
-                      {/* @ts-ignore */}
-                      {option.structured_formatting.secondary_text}
-                    </Typography>
-                  </Grid>
-                </Grid>
-              );
-            }}
-          />
-        </Grid>
-      ) : (
-        <Grid item />
-      )}
+            );
+          }}
+        />
+      </Grid>
     </Grid>
   );
 };
 
-export default // @ts-ignore
-scriptLoader(
-  [
-    `https://maps.googleapis.com/maps/api/js?key=${config.REACT_APP_GOOGLE_API_KEY}&libraries=places`,
-  ],
-  '/assets/bootstrap-markdown.js'
-  // @ts-ignore
-)(GoogleMaps);
+export default GoogleMaps;
