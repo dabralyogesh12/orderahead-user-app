@@ -1,6 +1,5 @@
 import {
   Grid,
-  Typography,
   Button,
   createStyles,
   makeStyles,
@@ -15,6 +14,7 @@ import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import OrderImage from '../../assets/OrderConfirm.png';
 import { BackButton } from '../../components/BackButton';
+import Typography from '../../Typography';
 import '../style/style.css';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme: Theme) =>
       flexDirection: 'column',
       width: '100%',
       alignItems: 'center',
-      background: '#E5E5E5',
+      background: '#F7F8FB',
     },
     phonefield: {
       background: 'white',
@@ -85,6 +85,7 @@ export const OrderConfirmation = () => {
       <Grid xs={12} sm={12} lg={6} className={classes.outerGrid}>
         <Paper elevation={3} className={classes.notificationPaper}>
           <Typography
+            roboto
             component="div"
             variant="body2"
             className={classes.notificationText}
@@ -95,25 +96,29 @@ export const OrderConfirmation = () => {
         <Grid xs={11} sm={11} lg={11} className={classes.middleGrid}>
           <Grid item xs={12} sm={12}>
             <BackButton />
-            <Typography component="div">
+            <Typography roboto component="div">
               Enter your name and your phone number to receive order
               confirmation and enjoy your food
             </Typography>
             <Divider className={classes.divider} />
-            <Typography> Name </Typography>
-            <TextField
-              id="outlined-basic"
-              variant="outlined"
-              fullWidth
-              className={classes.namefield}
-            />
-            <Typography>Phone number</Typography>
-            <PhoneInput
-              defaultCountry="US"
-              value={value}
-              onChange={() => handleOnChange}
-              className={classes.phonefield}
-            />
+            <Typography roboto> Name </Typography>
+            <div className="orderAheadNameInput">
+              <TextField
+                id="outlined-basic"
+                variant="outlined"
+                fullWidth
+                className={classes.namefield}
+              />
+            </div>
+            <Typography roboto>Phone number</Typography>
+            <div className="orderAheadPhoneInput">
+              <PhoneInput
+                defaultCountry="US"
+                value={value}
+                onChange={() => handleOnChange}
+                className={classes.phonefield}
+              />
+            </div>
           </Grid>
 
           <Grid item xs={12} sm={12} style={{ display: 'flex' }}>

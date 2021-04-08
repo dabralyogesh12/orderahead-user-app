@@ -1,22 +1,35 @@
-.PhoneInputInput {
+/* These styling changes are for Order Confirmation screen. */
+
+.orderAheadPhoneInput .PhoneInputInput {
   border: none;
-  height: 50px;
+  height: 50px !important;
   border-radius: 10px;
   outline: none !important;
 }
-.PhoneInputCountrySelectArrow {
+.orderAheadPhoneInput .PhoneInputCountrySelectArrow {
   display: none;
 }
-.PhoneInputCountry {
+.orderAheadPhoneInput .PhoneInputCountry {
   margin: 10px;
 }
-.MuiOutlinedInput-root {
+.orderAheadPhoneInput .PhoneInput--focus {
+  border-color: rgba(109, 92, 255, 1) !important;
+  border-width: 2px !important;
+}
+
+.orderAheadNameInput .MuiOutlinedInput-root {
   height: 50px;
   border-radius: 8px !important;
   background: white;
 }
-.MuiOutlinedInput-notchedOutline {
-  border: none !important;
-  border-radius: 8px !important;
-  border: 1px solid #e3e3e3 !important;
+
+.orderAheadNameInput .PrivateNotchedOutline-root-18 {
+  border-color: #e3e3e3 !important;
+}
+
+.orderAheadNameInput
+  .MuiOutlinedInput-root.Mui-focused
+  .MuiOutlinedInput-notchedOutline {
+  border-color: rgba(109, 92, 255, 1) !important;
+  /* border-width: 1px !important; */
 }
