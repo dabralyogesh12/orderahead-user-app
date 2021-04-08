@@ -71,12 +71,12 @@ export const OrderStatus = () => {
       <Grid xs={12} sm={12} lg={6} className={classes.outerGrid}>
         <Grid xs={10} sm={10} lg={10} style={{ width: '100%' }}>
           <Grid
-            xs={10}
-            sm={10}
-            lg={10}
+            xs={12}
+            sm={12}
+            lg={12}
             style={{ display: 'flex', justifyContent: 'center' }}
           >
-            <Grid item xs={8} sm={8} lg={8} className={classes.commonStyle}>
+            <Grid item className={classes.commonStyle}>
               <Typography roboto component="div" variant="body2">
                 Order # 602C52KP312806
               </Typography>

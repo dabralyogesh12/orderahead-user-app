@@ -95,9 +95,19 @@ function getStepContent(step: number) {
   }
 }
 
+const statusToIndexObject = {
+  SCHEDULED: 0,
+  RECEIVED: 1,
+  PREPARING: 2,
+  COMPLETED_PR: 3,
+  READY: 4,
+};
+
 export default function StatusStepper() {
   const classes = useStyles();
-  const [activeStep, setActiveStep] = React.useState(2);
+  const [activeStep, setActiveStep] = React.useState(
+    statusToIndexObject.PREPARING
+  );
   const steps = getSteps();
 
   return (
