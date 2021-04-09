@@ -24,6 +24,11 @@ class EventMap extends React.Component<IProps, IState> {
         zoom={14}
         containerStyle={{ width: '100%', height: '100%', position: 'static' }}
         style={{ width: '100%', height: '100%' }}
+        mapTypeControl={false}
+        zoomControl={false}
+        scaleControl={false}
+        streetViewControl={false}
+        fullscreenControl={false}
       />
     );
   }
