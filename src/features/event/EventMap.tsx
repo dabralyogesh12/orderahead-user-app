@@ -14,7 +14,7 @@ interface IState {
   stalls: typeof stall[];
 }
 
-export class EventMap extends React.Component<IProps, IState> {
+class EventMap extends React.Component<IProps, IState> {
   render() {
     return (
       // @ts-ignore
