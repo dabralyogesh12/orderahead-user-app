@@ -62,7 +62,7 @@ const useStyles = makeStyles((theme: Theme) =>
       textAlign: 'center',
     },
     notificationPaper: {
-      background: '#6D5CFF',
+      background: theme.palette.primary.main,
       width: '100%',
       borderRadius: '0px',
       height: '60px',
