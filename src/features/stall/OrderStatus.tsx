@@ -84,7 +84,8 @@ export const OrderStatus = () => {
                 roboto
                 component="div"
                 variant="subtitle1"
-                style={{ color: '#6D5CFF' }}
+                color="primary"
+                style={{ textAlign: 'center' }}
               >
                 Detailed receipt
               </Typography>
@@ -124,7 +125,8 @@ export const OrderStatus = () => {
               <Typography
                 roboto
                 variant="h3"
-                style={{ color: '#6D5CFF', marginTop: '15px' }}
+                style={{ marginTop: '15px' }}
+                color="primary"
               >
                 <Currency quantity={19.25} currency="USD" />
               </Typography>

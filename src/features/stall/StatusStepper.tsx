@@ -75,7 +75,7 @@ function getSteps() {
     'Order Received',
     'Preparing Order',
     'Order Completed',
-    'Order Collected',
+    'Order Cancelled',
   ];
 }
 function getStepContent(step: number) {
@@ -89,7 +89,7 @@ function getStepContent(step: number) {
     case 3:
       return 'Your order was completed with a partial refund';
     case 4:
-      return 'Your order has been collected';
+      return 'Your order was cancelled';
     default:
       return 'Unknown step';
   }
@@ -100,7 +100,7 @@ const statusToIndexObject = {
   RECEIVED: 1,
   PREPARING: 2,
   COMPLETED_PR: 3,
-  READY: 4,
+  CANCELLED: 4,
 };
 
 export default function StatusStepper() {
