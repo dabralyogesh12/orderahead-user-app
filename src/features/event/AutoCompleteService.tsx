@@ -12,7 +12,7 @@ import InputBase from '@material-ui/core/InputBase';
 import get from 'lodash/get';
 import IconButton from '@material-ui/core/IconButton';
 import withWidth from '@material-ui/core/withWidth';
-import { Input, withStyles } from '@material-ui/core';
+import { withStyles } from '@material-ui/core';
 import scriptLoader from 'react-async-script-loader';
 import { isDesktop } from '../../utils';
 import config from '../../config';
@@ -75,19 +75,16 @@ const GoogleMaps = (props: IProps) => {
     let active = true;
     // @ts-ignore
     if (!autocompleteService.current && window.google) {
-      console.log('here');
       // @ts-ignore
       autocompleteService.current = new window.google.maps.places.AutocompleteService();
     }
     if (!autocompleteService.current) {
-      console.log('here1');
       return undefined;
     }
 
     if (inputValue === '') {
       // @ts-ignore
       setOptions(value ? [value] : []);
-      console.log('here3');
       return undefined;
     }
 
@@ -117,7 +114,7 @@ const GoogleMaps = (props: IProps) => {
     return () => {
       active = false;
     };
-  }, []);
+  }, [value, inputValue, fetch]);
 
   return (
     <Grid container direction="row">
@@ -130,11 +127,6 @@ const GoogleMaps = (props: IProps) => {
             typeof option === 'string' ? option : option.description
           }
           // @ts-ignore
-          value={value}
-          style={{ width: '100%' }}
-          options={options}
-          includeInputInList
-          filterSelectedOptions
           onChange={(event, newValue) => {
             // @ts-ignore
             setOptions(newValue ? [newValue, ...options] : options);
@@ -144,22 +136,30 @@ const GoogleMaps = (props: IProps) => {
           onInputChange={(event, newInputValue) => {
             setInputValue(newInputValue);
           }}
-          // @ts-ignore
+          value={value}
+          style={{ width: '100%' }}
+          options={options}
+          includeInputInList
+          filterSelectedOptions
           // @ts-ignore
           renderInput={(params) => (
-            <TextField
-              required
-              {...params}
-              label="Address"
-              fullWidth
-              autoComplete="false"
-              InputProps={{
-                startAdornment: (
-                  <IconButton className={classes.iconButton} aria-label="menu">
-                    <img src="/img/search_adorn_start.png" />
-                  </IconButton>
-                ),
-                endAdornment: !isDesktop() ? (
+            <Grid container>
+              <Grid
+                container
+                direction="row"
+                className={classes.InputContainer}
+                ref={params.InputProps.ref}
+              >
+                <IconButton className={classes.iconButton} aria-label="menu">
+                  <img src="/img/search_adorn_start.png" />
+                </IconButton>
+                <InputBase
+                  className={classes.textInput}
+                  placeholder="Times Square, Manhattan, NY..."
+                  {...params.inputProps}
+                  // @ts-ignore
+                />
+                {!isDesktop() && (
                   <IconButton
                     type="submit"
                     className={classes.iconButton}
@@ -167,15 +167,12 @@ const GoogleMaps = (props: IProps) => {
                   >
                     <img src="/img/input_adorn_end.png" />
                   </IconButton>
-                ) : null,
-              }}
-            />
+                )}
+              </Grid>
+            </Grid>
           )}
           // @ts-ignore
-          renderOption={(option) => ''}
-        />
-        <Grid item xs={12} container className={classes.optionContainer}>
-          {options.map((option, key) => {
+          renderOption={(option) => {
             const matches =
               // @ts-ignore
               option.structured_formatting.main_text_matched_substrings;
@@ -198,8 +195,9 @@ const GoogleMaps = (props: IProps) => {
                   console.log('option', option);
                 }}
                 container
+                item
+                xs={12}
                 alignItems="center"
-                key={key}
                 className={classes.optionRow}
               >
                 <Grid item>
@@ -224,8 +222,8 @@ const GoogleMaps = (props: IProps) => {
                 </Grid>
               </Grid>
             );
-          })}
-        </Grid>
+          }}
+        />
       </Grid>
     </Grid>
   );

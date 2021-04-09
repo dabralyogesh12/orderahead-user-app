@@ -45,6 +45,7 @@ const styles = (theme: typeof Theme) =>
     accountHeading: {},
     eventPane: {
       maxHeight: '100%',
+      position: 'relative',
     },
     leftPane: {
       overflow: 'scroll',
@@ -110,7 +111,7 @@ class Event extends React.Component<IProps, IState> {
             </Hidden>
 
             <Grid item xs={12} container justify="center">
-              <Grid item container xs={isDesktop()? 12: 11}>
+              <Grid item container xs={isDesktop() ? 12 : 11}>
                 <Paper
                   component="form"
                   className={classes.paperRoot}
@@ -135,7 +136,7 @@ class Event extends React.Component<IProps, IState> {
                       left: isDesktop() ? '50%' : 'inherit',
                       transform: isDesktop() ? 'translate(-50%, 0)' : 'inherit',
                       borderRadius: isDesktop() ? '8px' : 'none',
-                      background: '#FFFFFF'
+                      background: '#FFFFFF',
                     }}
                   >
                     <AutoCompleteService />
