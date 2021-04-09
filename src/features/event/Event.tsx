@@ -3,13 +3,11 @@ import Grid from '@material-ui/core/Grid';
 import { RouteComponentProps } from 'react-router-dom';
 import { WithStyles, withStyles, createStyles } from '@material-ui/core';
 import withWidth, { isWidthUp } from '@material-ui/core/withWidth';
-import scriptLoader from 'react-async-script-loader';
 import Paper from '@material-ui/core/Paper';
 import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
 import Hidden from '@material-ui/core/Hidden';
 import { theme as Theme } from '../../theme';
 import EventHeader from './MobileHeader';
-import SearchBar from './SearchBar';
 import CategoriesScroll from './CategoriesScroll';
 import PlacesFilter from './PlacesFilter';
 import { event, stall } from '../../data/testData';
@@ -19,7 +17,6 @@ import EventMap from './EventMap';
 import DesktopHeader from './DesktopHeader';
 import { isDesktop } from '../../utils';
 import AutoCompleteService from './AutoCompleteService';
-import config from '../../config';
 
 const styles = (theme: typeof Theme) =>
   createStyles({
@@ -129,7 +126,7 @@ class Event extends React.Component<IProps, IState> {
                     container
                     direction="row"
                     item
-                    xs={11}
+                    xs={isDesktop() ? 11 : 12}
                     style={{
                       position: isDesktop() ? 'absolute' : 'inherit',
                       top: isDesktop() ? '30px' : 'inherit',
@@ -137,6 +134,11 @@ class Event extends React.Component<IProps, IState> {
                       transform: isDesktop() ? 'translate(-50%, 0)' : 'inherit',
                       borderRadius: isDesktop() ? '8px' : 'none',
                       background: '#FFFFFF',
+                    }}
+                    onClick={() => {
+                      if (!isDesktop()) {
+                        this.props.history.push('/map');
+                      }
                     }}
                   >
                     <AutoCompleteService />

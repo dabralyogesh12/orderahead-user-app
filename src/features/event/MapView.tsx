@@ -1,16 +1,10 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import { WithStyles, withStyles, createStyles, Box } from '@material-ui/core';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import Typography from '../../Typography';
+import { WithStyles, withStyles, createStyles } from '@material-ui/core';
 import EventMap from './EventMap';
 import { theme as Theme } from '../../theme';
 import WithNavigation from '../../components/BottomNavigationHoc';
 import AutoCompleteService from './AutoCompleteService';
-import SearchBar from './SearchBar';
 
 const styles = (theme: typeof Theme) =>
   createStyles({

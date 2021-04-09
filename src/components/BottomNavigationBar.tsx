@@ -1,11 +1,7 @@
-import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import ExploreIcon from '@material-ui/icons/Explore';
-import PieChartIcon from '@material-ui/icons/PieChart';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { HistoryType } from '../types';
 
 const useStyles = makeStyles({
@@ -20,6 +16,7 @@ const useStyles = makeStyles({
 });
 
 interface IProps {
+  history: HistoryType;
 }
 
 export default function BottomNavigationBar(props: IProps) {
@@ -31,6 +28,9 @@ export default function BottomNavigationBar(props: IProps) {
       value={value}
       onChange={(event, newValue) => {
         setValue(newValue);
+        if (newValue === 1) {
+          props.history.push('/map');
+        }
       }}
       showLabels
       className={classes.root}

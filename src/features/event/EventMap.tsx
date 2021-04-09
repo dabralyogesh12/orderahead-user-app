@@ -1,6 +1,5 @@
-import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
+import { Map, GoogleApiWrapper } from 'google-maps-react';
 import React from 'react';
-import { WithStyles } from '@material-ui/core';
 import { RouteComponentProps } from 'react-router-dom';
 import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
 import { stall } from '../../data/testData';
