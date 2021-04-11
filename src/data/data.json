@@ -1,8 +1,6 @@
 {
   "categories": [
-    {"name":  "coffee",
-      "image": "/img/coffee.png"
-    },
+    { "name": "coffee", "image": "/img/coffee.png" },
     {
       "name": "savory",
       "image": "/img/savory.png"

@@ -93,9 +93,8 @@
     "react/prefer-stateless-function": "off",
     // unusually retrict
     "react/static-property-placement": "off",
-    "react/no-array-index-key": "off",
     "import/no-named-as-default": "off"
-    // some proble with react project
+    // some problem with react project
 
   }
 }

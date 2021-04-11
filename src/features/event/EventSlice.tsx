@@ -9,7 +9,7 @@ export interface EventState {
 
 const initialState: EventState = {
   loading: false,
-  location: {}
+  location: {},
 };
 
 const EventSlice = createSlice({
@@ -22,12 +22,8 @@ const EventSlice = createSlice({
   },
 });
 
-export const {
-  setLocation
-} = EventSlice.actions;
+export const { setLocation } = EventSlice.actions;
 
 export default EventSlice.reducer;
 
-export const getLocation = (state: RootState) =>
-  state.event.location;
-
+export const getLocation = (state: RootState) => state.event.location;

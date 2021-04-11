@@ -10,11 +10,14 @@ import throttle from 'lodash/throttle';
 import InputBase from '@material-ui/core/InputBase';
 import get from 'lodash/get';
 import IconButton from '@material-ui/core/IconButton';
-import { isDesktop, initDetailsMap, getAddressObject } from '../../utils';
+import { isDesktop, initDetailsMap } from '../../utils';
 import { setLocation } from './EventSlice';
 import { ILocation } from '../../types';
 
-const autocompleteService = { current: null };
+type AutocompletePrediction = google.maps.places.AutocompletePrediction;
+const autocompleteService: {
+  current: null | google.maps.places.AutocompleteService;
+} = { current: null };
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -53,15 +56,16 @@ export interface IProps {}
 const GoogleMaps = (props: IProps) => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const [value, setValue] = React.useState(null);
+  const [value, setValue] = React.useState<null | AutocompletePrediction>(null);
   const [inputValue, setInputValue] = React.useState('');
-  const [options, setOptions] = React.useState([]);
+  const [options, setOptions] = React.useState<
+    (AutocompletePrediction | null)[]
+  >([]);
 
   const selectLocation = (item: ILocation) => {
     dispatch(setLocation({ location: item }));
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const loadData = async (placeId: string) => {
     const result = await initDetailsMap(placeId);
     const lng = result.geometry?.location.lng();
@@ -73,8 +77,7 @@ const GoogleMaps = (props: IProps) => {
     () =>
       throttle((request, callback) => {
         if (get(autocompleteService, 'current.getPlacePredictions')) {
-          // @ts-ignore
-          autocompleteService.current.getPlacePredictions(request, callback);
+          autocompleteService.current!.getPlacePredictions(request, callback);
         }
       }, 200),
     []
@@ -82,9 +85,7 @@ const GoogleMaps = (props: IProps) => {
 
   React.useEffect(() => {
     let active = true;
-    // @ts-ignore
     if (!autocompleteService.current && window.google) {
-      // @ts-ignore
       autocompleteService.current = new window.google.maps.places.AutocompleteService();
     }
     if (!autocompleteService.current) {
@@ -92,28 +93,23 @@ const GoogleMaps = (props: IProps) => {
     }
 
     if (inputValue === '') {
-      // @ts-ignore
       setOptions(value ? [value] : []);
       return undefined;
     }
 
     fetch(
       { input: inputValue },
-      // @ts-ignore
       (results: google.maps.places.AutocompletePrediction[]) => {
         if (active) {
-          // @ts-ignore
-          let newOptions: google.maps.places.AutocompletePrediction[] = [];
+          let newOptions: (google.maps.places.AutocompletePrediction | null)[] = [];
 
           if (value) {
-            // @ts-ignore
             newOptions = [value];
           }
 
           if (results) {
             newOptions = [...newOptions, ...results];
           }
-          // @ts-ignore
           setOptions(newOptions);
           console.log('newOptions', newOptions);
         }
@@ -130,18 +126,13 @@ const GoogleMaps = (props: IProps) => {
       <Grid item xs={12}>
         <Autocomplete
           fullWidth
-          // @ts-ignore
           getOptionLabel={(option) =>
-            // @ts-ignore
-            typeof option === 'string' ? option : option.description
+            typeof option === 'string' ? option : option!.description
           }
-          // @ts-ignore
           onChange={(event, newValue) => {
-            // @ts-ignore
             setOptions(newValue ? [newValue, ...options] : options);
             setValue(newValue);
           }}
-          // @ts-ignore
           onInputChange={(event, newInputValue) => {
             setInputValue(newInputValue);
           }}
@@ -150,7 +141,6 @@ const GoogleMaps = (props: IProps) => {
           options={options}
           includeInputInList
           filterSelectedOptions
-          // @ts-ignore
           renderInput={(params) => (
             <Grid container>
               <Grid
@@ -166,7 +156,6 @@ const GoogleMaps = (props: IProps) => {
                   className={classes.textInput}
                   placeholder="Times Square, Manhattan, NY..."
                   {...params.inputProps}
-                  // @ts-ignore
                 />
                 {!isDesktop() && (
                   <IconButton
@@ -180,15 +169,11 @@ const GoogleMaps = (props: IProps) => {
               </Grid>
             </Grid>
           )}
-          // @ts-ignore
           renderOption={(option) => {
-            const matches =
-              // @ts-ignore
-              option.structured_formatting.main_text_matched_substrings;
+            const matches = option!.structured_formatting
+              .main_text_matched_substrings;
             const parts = parse(
-              // @ts-ignore
-              option.structured_formatting.main_text,
-              // @ts-ignore
+              option!.structured_formatting.main_text,
               matches.map((match) => [
                 match.offset,
                 match.offset + match.length,
@@ -197,8 +182,7 @@ const GoogleMaps = (props: IProps) => {
             return (
               <Grid
                 onClick={() => {
-                  // @ts-ignore
-                  loadData(option.place_id);
+                  loadData(option!.place_id);
                 }}
                 container
                 item
@@ -210,20 +194,33 @@ const GoogleMaps = (props: IProps) => {
                   <LocationOnIcon className={classes.icon} />
                 </Grid>
                 <Grid item xs>
-                  {/* @ts-ignore */}
-                  {parts.map((part, index) => (
-                    <span
-                      // eslint-disable-next-line react/no-array-index-key
-                      key={index}
-                      style={{ fontWeight: part.highlight ? 700 : 400 }}
-                    >
-                      {part.text}
-                    </span>
-                  ))}
+                  {parts.map(
+                    (
+                      part: {
+                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                        highlight: any;
+                        text:
+                          | boolean
+                          | React.ReactChild
+                          | React.ReactFragment
+                          | React.ReactPortal
+                          | null
+                          | undefined;
+                      },
+                      index: React.Key | null | undefined
+                    ) => (
+                      <span
+                        // eslint-disable-next-line react/no-array-index-key
+                        key={index}
+                        style={{ fontWeight: part.highlight ? 700 : 400 }}
+                      >
+                        {part.text}
+                      </span>
+                    )
+                  )}
 
                   <Typography variant="body2" color="textSecondary">
-                    {/* @ts-ignore */}
-                    {option.structured_formatting.secondary_text}
+                    {option!.structured_formatting.secondary_text}
                   </Typography>
                 </Grid>
               </Grid>
