@@ -12,6 +12,11 @@ export interface IPos {
   squareInfo: Record<string, string>;
 }
 
+export interface ILocation {
+  lat: number | undefined;
+  lng: number | undefined;
+}
+
 export interface IPrice {
   amount: number;
   currency: string;

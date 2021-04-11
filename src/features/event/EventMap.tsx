@@ -1,17 +1,19 @@
-import { Map, GoogleApiWrapper } from 'google-maps-react';
+import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import { connect } from 'react-redux';
 import React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
-import { stall } from '../../data/testData';
+import { ILocation, RootState } from '../../types';
 import config from '../../config';
+import { getLocation } from './EventSlice';
+import { AppDispatch } from '../../store';
 
 interface IProps extends RouteComponentProps {
   width: Breakpoint;
+  markerLocation: ILocation;
 }
 
-interface IState {
-  stalls: typeof stall[];
-}
+interface IState {}
 
 class EventMap extends React.Component<IProps, IState> {
   render() {
@@ -29,13 +31,39 @@ class EventMap extends React.Component<IProps, IState> {
         scaleControl={false}
         streetViewControl={false}
         fullscreenControl={false}
-      />
+        center={{
+          lat: this.props.markerLocation.lat,
+          lng: this.props.markerLocation.lng,
+        }}
+      >
+        {/* @ts-ignore */}
+        <Marker
+          // @ts-ignore
+          name="Selected Location"
+          // @ts-ignore
+          position={{
+            lat: this.props.markerLocation.lat,
+            lng: this.props.markerLocation.lng,
+          }}
+        />
+      </Map>
     );
   }
 }
 
-export default GoogleApiWrapper({
-  // @ts-ignore
-  apiKey: config.REACT_APP_GOOGLE_API_KEY,
-  // @ts-ignore
-})(EventMap);
+const mapDispatchToProps = (dispatch: AppDispatch) => ({});
+
+const mapStateToProps = (state: RootState) => ({
+  markerLocation: getLocation(state),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(
+  GoogleApiWrapper({
+    // @ts-ignore
+    apiKey: config.REACT_APP_GOOGLE_API_KEY,
+    // @ts-ignore
+  })(EventMap)
+);

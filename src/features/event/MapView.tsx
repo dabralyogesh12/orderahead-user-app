@@ -1,6 +1,8 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import { WithStyles, withStyles, createStyles } from '@material-ui/core';
+import { WithStyles, withStyles, createStyles, Box } from '@material-ui/core';
+import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
+import { RouteComponentProps } from 'react-router-dom';
 import EventMap from './EventMap';
 import { theme as Theme } from '../../theme';
 import WithNavigation from '../../components/BottomNavigationHoc';
@@ -23,10 +25,19 @@ const styles = (theme: typeof Theme) =>
       height: '48px',
       backgroundColor: '#FFFFFF',
     },
+    backIcon: {
+      position: 'absolute',
+      top: '90px',
+      left: '7.5%',
+      transform: 'translate(-50%, 0)',
+      zIndex: 1000,
+      backgroundColor: '#FFFFFF',
+      padding: '10px',
+      borderRadius: '50%',
+    },
   });
 
-interface IProps extends WithStyles<typeof styles> {}
-
+interface IProps extends WithStyles<typeof styles>, RouteComponentProps {}
 interface IState {
   place: string;
 }
@@ -52,6 +63,12 @@ class MapView extends React.Component<IProps, IState> {
         <Grid xs={12} item container className={classes.searchContainer}>
           <AutoCompleteService />
         </Grid>
+        <Box
+          className={classes.backIcon}
+          onClick={() => this.props.history.goBack()}
+        >
+          <KeyboardBackspaceIcon />
+        </Box>
         <EventMap />
       </Grid>
     );

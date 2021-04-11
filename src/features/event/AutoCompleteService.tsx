@@ -1,8 +1,7 @@
 import React from 'react';
-import TextField from '@material-ui/core/TextField';
 import { Autocomplete } from '@material-ui/lab';
+import { useDispatch } from 'react-redux';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
-import InputAdornment from '@material-ui/core/InputAdornment';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
@@ -11,12 +10,9 @@ import throttle from 'lodash/throttle';
 import InputBase from '@material-ui/core/InputBase';
 import get from 'lodash/get';
 import IconButton from '@material-ui/core/IconButton';
-import withWidth from '@material-ui/core/withWidth';
-import { withStyles } from '@material-ui/core';
-import scriptLoader from 'react-async-script-loader';
-import { isDesktop } from '../../utils';
-import config from '../../config';
-import WithNavigation from '../../components/BottomNavigationHoc';
+import { isDesktop, initDetailsMap, getAddressObject } from '../../utils';
+import { setLocation } from './EventSlice';
+import { ILocation } from '../../types';
 
 const autocompleteService = { current: null };
 
@@ -56,9 +52,22 @@ export interface IProps {}
 
 const GoogleMaps = (props: IProps) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const [value, setValue] = React.useState(null);
   const [inputValue, setInputValue] = React.useState('');
   const [options, setOptions] = React.useState([]);
+
+  const selectLocation = (item: ILocation) => {
+    dispatch(setLocation({ location: item }));
+  };
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const loadData = async (placeId: string) => {
+    const result = await initDetailsMap(placeId);
+    const lng = result.geometry?.location.lng();
+    const lat = result.geometry?.location.lat();
+    selectLocation({ lat, lng });
+  };
 
   const fetch = React.useMemo(
     () =>
@@ -185,14 +194,11 @@ const GoogleMaps = (props: IProps) => {
                 match.offset + match.length,
               ])
             );
-
-            // @ts-ignore
-            console.log('option', option);
             return (
               <Grid
-                // @ts-ignore
                 onClick={() => {
-                  console.log('option', option);
+                  // @ts-ignore
+                  loadData(option.place_id);
                 }}
                 container
                 item
