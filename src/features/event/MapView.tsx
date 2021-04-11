@@ -7,6 +7,7 @@ import EventMap from './EventMap';
 import { theme as Theme } from '../../theme';
 import WithNavigation from '../../components/BottomNavigationHoc';
 import AutoCompleteService from './AutoCompleteService';
+import { isDesktop } from '../../utils';
 
 const styles = (theme: typeof Theme) =>
   createStyles({
@@ -43,12 +44,18 @@ interface IState {
 }
 
 class MapView extends React.Component<IProps, IState> {
+
   constructor(props: IProps) {
     super(props);
     this.state = {
       place: 'distance',
     };
-    console.log('mapview');
+  }
+
+  componentDidMount() {
+    if (isDesktop()) {
+      this.props.history.push('/event');
+    }
   }
 
   setPlace = (place: string) => {

@@ -31,6 +31,10 @@ class EventMap extends React.Component<IProps, IState> {
         scaleControl={false}
         streetViewControl={false}
         fullscreenControl={false}
+        initialCenter={{
+          lat: this.props.markerLocation.lat,
+          lng: this.props.markerLocation.lng,
+        }}
         center={{
           lat: this.props.markerLocation.lat,
           lng: this.props.markerLocation.lng,

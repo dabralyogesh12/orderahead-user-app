@@ -59,7 +59,7 @@ const GoogleMaps = (props: IProps) => {
   const [value, setValue] = React.useState<null | AutocompletePrediction>(null);
   const [inputValue, setInputValue] = React.useState('');
   const [options, setOptions] = React.useState<
-    (AutocompletePrediction | null)[]
+  (AutocompletePrediction | null)[]
   >([]);
 
   const selectLocation = (item: ILocation) => {
@@ -200,12 +200,12 @@ const GoogleMaps = (props: IProps) => {
                         // eslint-disable-next-line @typescript-eslint/no-explicit-any
                         highlight: any;
                         text:
-                          | boolean
-                          | React.ReactChild
-                          | React.ReactFragment
-                          | React.ReactPortal
-                          | null
-                          | undefined;
+                        | boolean
+                        | React.ReactChild
+                        | React.ReactFragment
+                        | React.ReactPortal
+                        | null
+                        | undefined;
                       },
                       index: React.Key | null | undefined
                     ) => (
