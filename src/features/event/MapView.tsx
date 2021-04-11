@@ -44,7 +44,6 @@ interface IState {
 }
 
 class MapView extends React.Component<IProps, IState> {
-
   constructor(props: IProps) {
     super(props);
     this.state = {
