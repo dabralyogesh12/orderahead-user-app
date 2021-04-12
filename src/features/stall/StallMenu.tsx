@@ -53,7 +53,6 @@ const useStyles = makeStyles((theme: Theme) =>
 // TODO : Add logic to filter items by category.
 
 export const StallMenu = () => {
-  // eslint-disable-next-line
   const classes = useStyles();
   const [itemCategories, setItemCategories] = React.useState<string[]>([]);
   const inputRef = React.useRef<HTMLInputElement>(null);
@@ -68,7 +67,10 @@ export const StallMenu = () => {
   return (
     <div className={classes.root}>
       <Grid container>
-        <StallBanner bannerImage="" />
+        <StallBanner
+          bannerImage="/img/CostaDesktop.png"
+          callingParent="StallMenu"
+        />
         <StallHeader standardTime={54} skipLineTime={2} logo="abcd" />
         <Grid item xs={12} className={classes.navGrid}>
           <Paper elevation={3} className={classes.categoriesPaper}>
@@ -84,16 +86,6 @@ export const StallMenu = () => {
           alignItems="center"
           direction="column"
         >
-          <Grid
-            container
-            xs={11}
-            lg={8}
-            justify="center"
-            direction="column"
-            className={classes.perItemGrid}
-          >
-            <ItemsSection itemsArray={categoryItems.items} />
-          </Grid>
           <Grid
             container
             xs={11}

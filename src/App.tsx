@@ -11,6 +11,7 @@ import OrderSent from './features/stall/OrderSent';
 import MapView from './features/event/MapView';
 import { OrderStatus } from './features/stall/OrderStatus';
 import { OrderConfirmation } from './features/stall/OrderConfirmation';
+import { MenuItem } from './features/stall/MenuItem';
 
 const styles = (theme: typeof Theme) =>
   createStyles({
@@ -92,6 +93,7 @@ class App extends Component<IProps, IState> {
                 component={OrderConfirmation}
               />
               <Route exact path="/map" component={MapView} />
+              <Route exact path="/stall/menu/item" component={MenuItem} />
               <Route path="/" component={Event} />
             </Switch>
           </Router>

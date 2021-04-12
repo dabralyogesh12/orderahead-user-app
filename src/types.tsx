@@ -43,3 +43,8 @@ export interface IItemDetail {
   pointOfSaleInfo: IPos;
   imagePaths?: string[];
 }
+
+export interface IModifier {
+  name: string;
+  price: IPrice;
+}
