@@ -90,17 +90,17 @@ export const MenuItem = () => {
         />
 
         <Grid container lg={12} xs={12} sm={12} className={classes.aboutGrid}>
-          <Grid item xs={11} lg={10} className={classes.itemText}>
+          <Grid item xs={10} lg={8} className={classes.itemText}>
             <AboutItem details="Free range egg, Cumberland sausage, and beechwood smoked bacon with Heinz tomato ketchup & béchamel sauce in a barmarked tortilla wrap." />
           </Grid>
-          <Grid item xs={11} lg={10} className={classes.priceGrid}>
+          <Grid item xs={10} lg={8} className={classes.priceGrid}>
             <Typography
               variant="body1"
               component="div"
               roboto
               style={{ fontWeight: 700 }}
             >
-              <Currency quantity={10.0} currency="USD" /> -
+              <Currency quantity={10.0} currency="USD" /> -{' '}
               <Currency quantity={20.0} currency="USD" />
             </Typography>
             <AddDelete />

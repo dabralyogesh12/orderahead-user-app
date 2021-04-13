@@ -39,7 +39,7 @@ export const AddDelete = () => {
       <Button onClick={handleIncrement} className={classes.buttonStyle}>
         +
       </Button>
-      {displayCount && count}
+      {count}
       {displayCount && (
         <Button onClick={handleDecrement} className={classes.buttonStyle}>
           -

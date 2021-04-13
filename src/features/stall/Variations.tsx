@@ -25,7 +25,6 @@ export default function CheckboxList() {
   const handleToggle = (value: number) => () => {
     const currentIndex = checked.indexOf(value);
     const newChecked = [...checked];
-    console.log(newChecked);
     if (newChecked.length > 1) {
       return;
     }
