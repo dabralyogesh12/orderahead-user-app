@@ -36,14 +36,30 @@ const styles = (theme: typeof Theme) =>
     },
   });
 
-interface IState {}
+interface IState {
+  width: number;
+}
 interface IProps extends WithStyles<typeof styles> {}
 
 class App extends Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
-    this.state = {};
+    this.state = {
+      width: 0,
+    };
   }
+
+  componentDidMount() {
+    window.addEventListener('resize', this.updateDimensions);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateDimensions);
+  }
+
+  updateDimensions = () => {
+    this.setState({ width: window.innerWidth });
+  };
 
   render() {
     const { classes } = this.props;
@@ -57,9 +73,12 @@ class App extends Component<IProps, IState> {
         }}
         maxSnack={3}
       >
-        <div className="App">
+        <div
+          className="App"
+          // @ts-ignore
+          key={this.state.width}
+        >
           {/* @ts-ignore */}
-
           <Router>
             <Switch>
               <Route exact path="/event" component={Event} />

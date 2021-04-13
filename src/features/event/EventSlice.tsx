@@ -1,6 +1,7 @@
 /* eslint no-param-reassign: 0 */ // --> OFF
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../types';
+import config from '../../config';
 
 export interface EventState {
   loading: boolean;
@@ -9,7 +10,11 @@ export interface EventState {
 
 const initialState: EventState = {
   loading: false,
-  location: {},
+  location: {
+    lat: config.SAN_FRANCISCO_LAT,
+    lng: config.SAN_FRANCISCO_LONG,
+    place: ''
+  },
 };
 
 const EventSlice = createSlice({

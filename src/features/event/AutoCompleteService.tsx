@@ -1,6 +1,6 @@
 import React from 'react';
 import { Autocomplete } from '@material-ui/lab';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -10,8 +10,9 @@ import throttle from 'lodash/throttle';
 import InputBase from '@material-ui/core/InputBase';
 import get from 'lodash/get';
 import IconButton from '@material-ui/core/IconButton';
-import { isDesktop, initDetailsMap } from '../../utils';
-import { setLocation } from './EventSlice';
+import {isDesktop} from '../../utils';
+import { initDetailsMap } from '../../mapUtils';
+import { getLocation, setLocation } from './EventSlice';
 import { ILocation } from '../../types';
 
 type AutocompletePrediction = google.maps.places.AutocompletePrediction;
@@ -55,6 +56,7 @@ export interface IProps {}
 
 const GoogleMaps = (props: IProps) => {
   const classes = useStyles();
+  const locationData = useSelector(getLocation);
   const dispatch = useDispatch();
   const [value, setValue] = React.useState<null | AutocompletePrediction>(null);
   const [inputValue, setInputValue] = React.useState('');
@@ -70,7 +72,7 @@ const GoogleMaps = (props: IProps) => {
     const result = await initDetailsMap(placeId);
     const lng = result.geometry?.location.lng();
     const lat = result.geometry?.location.lat();
-    selectLocation({ lat, lng });
+    selectLocation({ lat, lng, place :result });
   };
 
   const fetch = React.useMemo(
@@ -111,7 +113,6 @@ const GoogleMaps = (props: IProps) => {
             newOptions = [...newOptions, ...results];
           }
           setOptions(newOptions);
-          console.log('newOptions', newOptions);
         }
       }
     );
@@ -154,7 +155,7 @@ const GoogleMaps = (props: IProps) => {
                 </IconButton>
                 <InputBase
                   className={classes.textInput}
-                  placeholder="Times Square, Manhattan, NY..."
+                  placeholder={get(locationData, 'place.formatted_address') || "Times Square, Manhattan, NY..."}
                   {...params.inputProps}
                 />
                 {!isDesktop() && (

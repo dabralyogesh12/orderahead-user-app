@@ -6,6 +6,7 @@ export type RootState = ReturnType<typeof RootReducer>;
 export type HistoryType = ReturnType<typeof Object>;
 
 export type IStall = typeof stall;
+type AutocompletePrediction = google.maps.places.AutocompletePrediction;
 
 export interface IPos {
   type: string;
@@ -15,6 +16,7 @@ export interface IPos {
 export interface ILocation {
   lat: number | undefined;
   lng: number | undefined;
+  place: google.maps.places.PlaceResult
 }
 
 export interface IPrice {
