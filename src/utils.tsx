@@ -42,5 +42,3 @@ export const GenerateExpenseLevel = (expenseLevel: number) => {
 };
 
 export const isDesktop = () => window.innerWidth > 1280;
-
-

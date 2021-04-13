@@ -16,7 +16,7 @@ export interface IPos {
 export interface ILocation {
   lat: number | undefined;
   lng: number | undefined;
-  place: google.maps.places.PlaceResult
+  place: google.maps.places.PlaceResult;
 }
 
 export interface IPrice {

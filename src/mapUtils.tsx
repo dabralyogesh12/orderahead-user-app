@@ -1,6 +1,5 @@
 import config from './config';
 
-
 const findDetails = (
   service: google.maps.places.PlacesService,
   request: google.maps.places.PlaceDetailsRequest

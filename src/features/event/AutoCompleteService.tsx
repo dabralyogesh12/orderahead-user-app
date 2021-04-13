@@ -10,7 +10,7 @@ import throttle from 'lodash/throttle';
 import InputBase from '@material-ui/core/InputBase';
 import get from 'lodash/get';
 import IconButton from '@material-ui/core/IconButton';
-import {isDesktop} from '../../utils';
+import { isDesktop } from '../../utils';
 import { initDetailsMap } from '../../mapUtils';
 import { getLocation, setLocation } from './EventSlice';
 import { ILocation } from '../../types';
@@ -72,7 +72,7 @@ const GoogleMaps = (props: IProps) => {
     const result = await initDetailsMap(placeId);
     const lng = result.geometry?.location.lng();
     const lat = result.geometry?.location.lat();
-    selectLocation({ lat, lng, place :result });
+    selectLocation({ lat, lng, place: result });
   };
 
   const fetch = React.useMemo(
@@ -155,7 +155,10 @@ const GoogleMaps = (props: IProps) => {
                 </IconButton>
                 <InputBase
                   className={classes.textInput}
-                  placeholder={get(locationData, 'place.formatted_address') || "Times Square, Manhattan, NY..."}
+                  placeholder={
+                    get(locationData, 'place.formatted_address') ||
+                    'Times Square, Manhattan, NY...'
+                  }
                   {...params.inputProps}
                 />
                 {!isDesktop() && (

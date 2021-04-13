@@ -13,7 +13,7 @@ const initialState: EventState = {
   location: {
     lat: config.SAN_FRANCISCO_LAT,
     lng: config.SAN_FRANCISCO_LONG,
-    place: ''
+    place: '',
   },
 };
 
