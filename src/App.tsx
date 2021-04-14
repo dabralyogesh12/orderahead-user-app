@@ -8,6 +8,7 @@ import Event from './features/event/Event';
 import { StallMenu } from './features/stall/StallMenu';
 import AddedToCart from './features/stall/AddedToCart';
 import OrderSent from './features/stall/OrderSent';
+import SearchView from './features/event/SearchView';
 import MapView from './features/event/MapView';
 import { OrderStatus } from './features/stall/OrderStatus';
 import { OrderConfirmation } from './features/stall/OrderConfirmation';
@@ -82,6 +83,7 @@ class App extends Component<IProps, IState> {
           <Router>
             <Switch>
               <Route exact path="/event" component={Event} />
+              <Route exact path="/search_view" component={SearchView} />
               <Route exact path="/stall/menu" component={StallMenu} />
               <Route exact path="/stall/cart/added" component={AddedToCart} />
               <Route exact path="/stall/order/sent" component={OrderSent} />

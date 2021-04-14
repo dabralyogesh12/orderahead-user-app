@@ -80,13 +80,16 @@
     "react/destructuring-assignment": "off",
     "react/require-default-props": "off",
     "no-underscore-dangle": "off",
-    "@typescript-eslint/comma-dangle": ["error", {
-      "arrays": "only-multiline",
-      "objects": "only-multiline",
-      "imports": "only-multiline",
-      "exports": "only-multiline",
-      "functions": "never"
-    }],
+    "@typescript-eslint/comma-dangle": [
+      "error",
+      {
+        "arrays": "only-multiline",
+        "objects": "only-multiline",
+        "imports": "only-multiline",
+        "exports": "only-multiline",
+        "functions": "never"
+      }
+    ],
     "@typescript-eslint/dot-notation": "off",
     "react/jsx-curly-newline": "off",
     "@typescript-eslint/quotes": "off",

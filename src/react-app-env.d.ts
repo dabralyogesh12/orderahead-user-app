@@ -11,5 +11,6 @@ declare module '@material-ui/core/Typography/Typography' {
     h1R: true;
   }
 }
+declare module 'lodash/get';
 declare module 'autosuggest-highlight/parse';
 declare module 'react-async-script-loader';

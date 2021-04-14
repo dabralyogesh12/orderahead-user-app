@@ -67,9 +67,7 @@ const styles = (theme: typeof Theme) =>
       textTransform: 'capitalize',
       width: '90px !important',
     },
-    tabs: {
-      justifyContent: 'center ',
-    },
+    tabs: {},
   });
 
 interface IProps extends WithStyles<typeof styles> {
@@ -105,7 +103,7 @@ class CategoriesScroll extends React.Component<IProps, IState> {
             <Grid
               item
               xs={11}
-              className={`${classes.categoryWrapper} startJustifiedFlex`}
+              className={`${classes.categoryWrapper}`}
               container
             >
               {/* @ts-ignore */}

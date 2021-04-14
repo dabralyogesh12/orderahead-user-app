@@ -1,4 +1,5 @@
 import React from 'react';
+import { IStall } from './types';
 
 const greyedDollar = () => (
   <span
@@ -42,3 +43,20 @@ export const GenerateExpenseLevel = (expenseLevel: number) => {
 };
 
 export const isDesktop = () => window.innerWidth > 1280;
+
+const FilterbyTagOrName = (stalls: IStall[], tag: string) =>
+  stalls.filter((stall) => {
+    const validTags = stall.tag.filter(
+      (item) => item.name.toLowerCase() === tag.toLowerCase()
+    );
+    const index = stall.name.toLowerCase().indexOf(tag.toLowerCase());
+    return (validTags.length > 0 || index !== -1);
+  });
+
+export const FilterStalls = (stalls: IStall[], query: string) => {
+  let filteredStalls = stalls;
+  if (query) {
+    filteredStalls = FilterbyTagOrName(filteredStalls, query);
+  }
+  return filteredStalls;
+};
