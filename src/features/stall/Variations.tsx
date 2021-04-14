@@ -4,65 +4,79 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import Checkbox from '@material-ui/core/Checkbox';
-import IconButton from '@material-ui/core/IconButton';
-import CommentIcon from '@material-ui/icons/Comment';
+import Currency from 'react-currency-formatter';
+import { Radio } from '@material-ui/core';
+import { IVariation } from '../../types';
+import Typography from '../../Typography';
+
+interface IProps {
+  variations: IVariation[];
+}
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       width: '100%',
-      maxWidth: 360,
-      backgroundColor: theme.palette.background.paper,
     },
+    radio: {
+      '&$checked': {
+        color: theme.palette.primary.main,
+      },
+      paddingLeft: '0px',
+    },
+    checked: {},
   })
 );
 
-export default function CheckboxList() {
+export default function Variations(props: IProps) {
   const classes = useStyles();
-  const [checked, setChecked] = React.useState([0]);
-  const maxCheck = 2;
-  const handleToggle = (value: number) => () => {
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
-    if (newChecked.length > 1) {
-      return;
-    }
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-
-    setChecked(newChecked);
+  const [selectedValue, setSelectedValue] = React.useState('');
+  const { variations } = props;
+  const handleClick = (id: string) => () => {
+    setSelectedValue(id);
   };
 
   return (
-    <List className={classes.root}>
-      {[0, 1, 2, 3].map((value) => {
-        const labelId = `checkbox-list-label-${value}`;
+    <List className={classes.root} dense disablePadding>
+      {variations.map((variation) => {
+        const labelId = `checkbox-list-label-${variation.name}`;
 
         return (
           <ListItem
-            key={value}
+            key={variation.name}
             role={undefined}
             dense
             button
-            onClick={handleToggle(value)}
+            onClick={handleClick(variation._id)}
+            disableGutters
           >
-            <ListItemIcon>
-              <Checkbox
-                edge="start"
-                checked={checked.indexOf(value) !== -1}
-                tabIndex={-1}
-                disableRipple
-                inputProps={{ 'aria-labelledby': labelId }}
+            <ListItemIcon style={{ minWidth: '0px' }}>
+              <Radio
+                checked={selectedValue === variation._id}
+                onChange={handleClick(variation._id)}
+                value="d"
+                color="default"
+                name="radio-button-demo"
+                inputProps={{ 'aria-label': variation.name }}
+                classes={{ root: classes.radio, checked: classes.checked }}
               />
             </ListItemIcon>
-            <ListItemText id={labelId} primary={`Line item ${value + 1}`} />
-            <IconButton edge="end" aria-label="comments">
-              <CommentIcon />
-            </IconButton>
+            <ListItemText
+              id={labelId}
+              primary={
+                <Typography robot variant="body2">
+                  {variation.name}
+                </Typography>
+              }
+            />
+            <div>
+              <Typography roboto>
+                <Currency
+                  quantity={variation.price.amount / 100}
+                  currency={variation.price.currency}
+                />
+              </Typography>
+            </div>
           </ListItem>
         );
       })}

@@ -4,14 +4,17 @@ import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { Divider } from '@material-ui/core';
+import { Chip, Divider } from '@material-ui/core';
 import Typography from '../../Typography';
 import ModifierList from './ModifierList';
-import { IModifier } from '../../types';
+import { IModifier, IVariation } from '../../types';
+import Variations from './Variations';
 
 interface IProps {
   name: string;
-  options: IModifier[];
+  options?: IModifier[];
+  callingParent: string;
+  variations?: IVariation[];
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -44,7 +47,10 @@ export default function Modifiers(props: IProps) {
 
   return (
     <div className={classes.root}>
-      <Accordion className={classes.accordianstyle}>
+      <Accordion
+        className={classes.accordianstyle}
+        defaultExpanded={props.callingParent !== 'Modifiers'}
+      >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
@@ -52,9 +58,28 @@ export default function Modifiers(props: IProps) {
           className={classes.summary}
         >
           <Typography variant="h4">{props.name}</Typography>
+          {props.callingParent === 'Modifiers' ? (
+            <Chip
+              variant="outlined"
+              color="secondary"
+              size="small"
+              label="Min-0, Max-2"
+            />
+          ) : (
+            <Chip
+              variant="outlined"
+              color="secondary"
+              size="small"
+              label="Required "
+            />
+          )}
         </AccordionSummary>
         <AccordionDetails className={classes.listItems}>
-          <ModifierList options={props.options} />
+          {props.callingParent === 'Modifiers' ? (
+            <ModifierList options={props.options!} />
+          ) : (
+            <Variations variations={props.variations!} />
+          )}
         </AccordionDetails>
       </Accordion>
       <Divider light className={classes.divider} />

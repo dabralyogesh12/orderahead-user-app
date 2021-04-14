@@ -123,12 +123,19 @@ export const MenuItem = () => {
             direction="column"
             className={classes.optionsGrid}
           >
-            {/* {options.variations.length > 0 && <Variations />} */}
+            {data.variations.length > 0 && (
+              <Modifiers
+                name="Choose"
+                variations={data.variations}
+                callingParent="Variations"
+              />
+            )}
             {data.modifier.map((modifier) => (
               <Modifiers
                 name={modifier.name}
                 options={modifier.options}
                 key={modifier.name}
+                callingParent="Modifiers"
               />
             ))}
           </Grid>

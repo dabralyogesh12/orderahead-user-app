@@ -61,11 +61,11 @@ export const ItemName = (props: IProps) => {
       <Grid item xs={11} lg={11} style={{ width: '100%' }}>
         <BackButton />
       </Grid>
-      <Grid item lg={9} md={10} xs={11} className={classes.parentGrid}>
+      <Grid item lg={8} md={10} xs={11} className={classes.parentGrid}>
         <div className={classes.contentGrid}>
           <Grid
             item
-            lg={4}
+            lg={6}
             xs={7}
             style={{ marginTop: 'auto', color: 'white' }}
           >
@@ -75,7 +75,7 @@ export const ItemName = (props: IProps) => {
           </Grid>
           <Grid
             item
-            lg={3}
+            lg={2}
             xs={4}
             style={{ marginTop: 'auto', textAlign: 'end' }}
           >
