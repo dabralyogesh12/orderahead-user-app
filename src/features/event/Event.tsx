@@ -147,7 +147,10 @@ class Event extends React.Component<IProps, IState> {
               </Grid>
             </Grid>
             <Grid item xs={12}>
-              <CategoriesScroll eventRef={this.eventContainerRef} />
+              <CategoriesScroll
+                eventRef={this.eventContainerRef}
+                callingParent="Event"
+              />
             </Grid>
             <Grid item xs={11}>
               <PlacesFilter />
