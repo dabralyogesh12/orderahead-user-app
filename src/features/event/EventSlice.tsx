@@ -11,8 +11,8 @@ export interface EventState {
 const initialState: EventState = {
   loading: false,
   location: {
-    lat: config.SAN_FRANCISCO_LAT,
-    lng: config.SAN_FRANCISCO_LONG,
+    lat: null,
+    lng: null,
     place: '',
   },
 };
