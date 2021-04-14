@@ -1,5 +1,4 @@
 import React from 'react';
-import { IStall } from './types';
 
 const greyedDollar = () => (
   <span

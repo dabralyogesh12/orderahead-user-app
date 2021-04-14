@@ -1,27 +1,34 @@
 /* eslint no-param-reassign: 0 */ // --> OFF
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../types';
+import config from '../../config';
 
-export interface LandingState {
+export interface EventState {
   loading: boolean;
+  location: object;
 }
 
-const initialState: LandingState = {
+const initialState: EventState = {
   loading: false,
+  location: {
+    lat: null,
+    lng: null,
+    place: '',
+  },
 };
 
 const EventSlice = createSlice({
   name: 'event',
   initialState,
   reducers: {
-    // setLoading(state, action: PayloadAction<{ loading: boolean }>) {
-    //   state.loading = action.payload.loading;
-    // },
+    setLocation(state, action: PayloadAction<{ location: Object }>) {
+      state.location = action.payload.location;
+    },
   },
 });
 
-export const {} = EventSlice.actions;
+export const { setLocation } = EventSlice.actions;
 
 export default EventSlice.reducer;
 
-// export const getLoadingStatus = (state: RootState) => state.loading.loading;
+export const getLocation = (state: RootState) => state.event.location;
