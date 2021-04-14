@@ -71,7 +71,11 @@ export const StallMenu = () => {
           bannerImage="/img/CostaDesktop.png"
           callingParent="StallMenu"
         />
-        <StallHeader standardTime={54} skipLineTime={2} logo="abcd" />
+        <StallHeader
+          standardTime={54}
+          skipLineTime={2}
+          logo="/img/ItemLogo.png"
+        />
         <Grid item xs={12} className={classes.navGrid}>
           <Paper elevation={3} className={classes.categoriesPaper}>
             <CategoriesScroll eventRef={inputRef} />

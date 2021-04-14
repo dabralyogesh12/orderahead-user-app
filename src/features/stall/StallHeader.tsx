@@ -1,12 +1,10 @@
 import { makeStyles, Theme, createStyles, Grid } from '@material-ui/core';
 import React from 'react';
-import logo from '../../assets/logo.png';
 import Typography from '../../Typography';
 
 interface IProps {
   standardTime: number;
   skipLineTime: number;
-  // eslint-disable-next-line react/no-unused-prop-types
   logo: string;
 }
 
@@ -58,7 +56,7 @@ export const StallHeader = (props: IProps) => {
         </Typography>
       </Grid>
       <Grid item xs={4} className={classes.headerItem}>
-        <img src="/img/ItemLogo.png" alt="Stall Logo" />
+        <img src={props.logo} alt="Stall Logo" />
       </Grid>
       <Grid item xs={4} className={classes.headerItem}>
         <Typography roboto color="error" component="div">
