@@ -1,11 +1,22 @@
-import { History } from 'history';
 import RootReducer from './rootReducer';
-import { stall } from './data/testData';
+import {
+  cart,
+  cartItem,
+  invoice,
+  lineItems,
+  menu,
+  slotsInfo,
+  stall,
+} from './data/testData';
 
 export type RootState = ReturnType<typeof RootReducer>;
 export type HistoryType = ReturnType<typeof Object>;
 
 export type IStall = typeof stall;
+export type ICart = typeof cart;
+export type ILineItems = typeof lineItems;
+export type ILineItem = typeof lineItems[0];
+export type ICartItem = typeof cartItem;
 type AutocompletePrediction = google.maps.places.AutocompletePrediction;
 
 export interface IPos {
@@ -22,6 +33,12 @@ export interface ILocation {
 export interface IPrice {
   amount: number;
   currency: string;
+}
+export type IMenu = typeof menu;
+export type IInvoice = typeof invoice;
+export interface IDynamicSettings {
+  requestedEta: number;
+  requestedDynamicFee: IPrice;
 }
 export interface IVariation {
   name: string;
@@ -43,6 +60,8 @@ export interface IItemDetail {
   pointOfSaleInfo: IPos;
   imagePaths?: string[];
 }
+
+export type ISlotsInfo = typeof slotsInfo;
 
 export interface IModifier {
   name: string;
