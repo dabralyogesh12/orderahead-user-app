@@ -100,3 +100,16 @@ export const FilterStalls = (stalls: IStall[], query: string) => {
   }
   return filteredStalls;
 };
+
+export function loadScript(
+  scriptSource: string,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  callback: ((this: GlobalEventHandlers, ev: Event) => any) | null
+) {
+  const scriptLoad = document.createElement('script');
+  scriptLoad.src = scriptSource;
+  scriptLoad.type = 'text/javascript';
+  scriptLoad.async = false;
+  scriptLoad.onload = callback;
+  document.getElementsByTagName('head')[0].appendChild(scriptLoad);
+}
