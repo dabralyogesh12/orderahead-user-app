@@ -177,7 +177,6 @@ class SquarePayment extends Component<IProps, IState> {
     }
   };
 
-
   render() {
     // Do not show horizontal separator when only one payment is available.
     const singlePaymentMethods =

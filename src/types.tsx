@@ -7,7 +7,7 @@ import {
   menu,
   slotsInfo,
   stall,
-  checkoutstate
+  checkoutstate,
 } from './data/testData';
 
 export type RootState = ReturnType<typeof RootReducer>;
