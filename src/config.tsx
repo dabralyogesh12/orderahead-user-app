@@ -9,7 +9,7 @@ const getEnvVar = (varName: string): string | undefined => {
 
 const config = {
   SENTRY_URL: getEnvVar('REACT_APP_SENTRY_URL'),
-  square_app_id: '',
+  surge_fee_enabled_stall_whitelist: [],
   square_payment_form_js: '',
   GOOGLE_ANALYTICS_CODE: getEnvVar('REACT_APP_GOOGLE_ANALYTICS_CODE'),
   REACT_APP_GOOGLE_API_KEY: getEnvVar('REACT_APP_GOOGLE_KEY'),
