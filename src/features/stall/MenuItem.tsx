@@ -8,7 +8,7 @@ import {
   Button,
 } from '@material-ui/core';
 import Currency from 'react-currency-formatter';
-import {useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { StallBanner } from './StallBanner';
 import { AboutItem } from './AboutItem';
 import Typography from '../../Typography';
@@ -162,7 +162,7 @@ export const MenuItem = () => {
               variant="contained"
               color="primary"
               className={classes.addButton}
-              onClick={()=> history.push("/stall/cart/added")}
+              onClick={() => history.push('/stall/cart/added')}
             >
               Add to Cart
             </Button>
