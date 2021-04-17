@@ -11,6 +11,7 @@ import {
 } from '@material-ui/core';
 import React from 'react';
 import PhoneInput from 'react-phone-number-input';
+import {useHistory} from 'react-router-dom';
 import 'react-phone-number-input/style.css';
 import { BackButton } from '../../components/BackButton';
 import Typography from '../../Typography';
@@ -75,6 +76,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export const OrderConfirmation = () => {
   const [value, setValue] = React.useState('');
+  const history = useHistory();
   const classes = useStyles();
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
@@ -129,6 +131,7 @@ export const OrderConfirmation = () => {
                 borderRadius: '30px',
                 marginTop: 'auto',
               }}
+              onClick={() => history.push("/stall/order/sent")}
             >
               Place Order
             </Button>

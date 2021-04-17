@@ -67,7 +67,9 @@ const styles = (theme: typeof Theme) =>
       textTransform: 'capitalize',
       width: '90px !important',
     },
-    tabs: {},
+    tabs: {
+      justifyContent: "center"
+    },
   });
 
 interface IProps extends WithStyles<typeof styles> {

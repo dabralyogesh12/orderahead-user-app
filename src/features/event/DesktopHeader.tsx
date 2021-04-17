@@ -12,6 +12,7 @@ import InputBase from '@material-ui/core/InputBase';
 import { theme as Theme } from '../../theme';
 import RecentSearches from './RecentSearches';
 import { getQuery, setQuery } from './EventSlice';
+import SleekLink from '../../components/SleekLink';
 
 const useStyles = makeStyles((theme: typeof Theme) =>
   createStyles({
@@ -162,9 +163,11 @@ export default function DesktopHeader() {
               value={searchQuery}
               onChange={(evt) => dispatch(setQuery(evt.target.value))}
             />
-            <IconButton color="inherit">
-              <img src="/img/cart.svg" className={classes.cartImg} />
-            </IconButton>
+            <SleekLink to="/cart">
+              <IconButton color="inherit">
+                <img src="/img/cart.svg" className={classes.cartImg} />
+              </IconButton>
+            </SleekLink>
             <IconButton color="inherit">
               <DehazeIcon style={{ color: '#979797' }} />
             </IconButton>

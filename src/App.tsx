@@ -90,18 +90,18 @@ class App extends Component<IProps, IState> {
             <Switch>
               <Route exact path="/event" component={Event} />
               <Route exact path="/search_view" component={SearchView} />
-              <Route exact path="/stall/menu" component={StallMenu} />
+              <Route exact path="/stall/:id" component={StallMenu} />
+              <Route exact path="/stall/menu/item/:id" component={MenuItem} />
               <Route exact path="/stall/cart/added" component={AddedToCart} />
-              <Route exact path="/stall/order/sent" component={OrderSent} />
               <Route exact path="/cart" component={Cart} />
-              <Route exact path="/stall/order/status" component={OrderStatus} />
               <Route
                 exact
                 path="/stall/order/confirmation"
                 component={OrderConfirmation}
               />
+              <Route exact path="/stall/order/sent" component={OrderSent} />
+              <Route exact path="/order" component={OrderStatus} />
               <Route exact path="/map" component={MapView} />
-              <Route exact path="/stall/menu/item" component={MenuItem} />
               <Route path="/" component={Event} />
             </Switch>
           </Router>

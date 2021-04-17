@@ -2,7 +2,7 @@
 import React, { LegacyRef, RefObject } from 'react';
 import { connect } from 'react-redux';
 import config from 'react-global-configuration';
-import { Redirect, RouteComponentProps } from 'react-router-dom';
+import { Redirect, RouteComponentProps, withRouter } from 'react-router-dom';
 import get from 'lodash/get';
 import {
   createStyles,
@@ -268,6 +268,7 @@ class Cart extends React.Component<IProps, IState> {
                 style={{
                   width: this.bodyWrapper!.current!.offsetWidth,
                 }}
+                onClick={() => this.props.history.push("/stall/order/confirmation")}
               >
                 <Typography variant="button" roboto={true}>
                   Proceed to Checkout
@@ -319,4 +320,4 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
   // @ts-ignore
-)(withStyles(styles)(DesktopHeaderHOC(Cart)));
+)(withRouter((withStyles(styles)(DesktopHeaderHOC(Cart)))));
