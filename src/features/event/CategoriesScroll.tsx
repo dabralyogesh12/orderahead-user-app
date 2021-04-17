@@ -68,7 +68,7 @@ const styles = (theme: typeof Theme) =>
       width: '90px !important',
     },
     tabs: {
-      justifyContent: "center"
+      justifyContent: 'center',
     },
   });
 

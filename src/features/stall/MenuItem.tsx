@@ -8,6 +8,7 @@ import {
   Button,
 } from '@material-ui/core';
 import Currency from 'react-currency-formatter';
+import {useHistory} from 'react-router-dom';
 import { StallBanner } from './StallBanner';
 import { AboutItem } from './AboutItem';
 import Typography from '../../Typography';
@@ -79,6 +80,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export const MenuItem = () => {
   const classes = useStyles();
+  const history = useHistory();
   return (
     <div className={classes.root}>
       <Grid container>
@@ -160,6 +162,7 @@ export const MenuItem = () => {
               variant="contained"
               color="primary"
               className={classes.addButton}
+              onClick={()=> history.push("/stall/cart/added")}
             >
               Add to Cart
             </Button>

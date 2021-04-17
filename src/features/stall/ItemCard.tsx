@@ -99,10 +99,10 @@ export default function ItemCard(props: IProps) {
               <CardMedia
                 className={classes.cover}
                 image={
-                props && props.itemDetails && props.itemDetails.imagePaths
-                  ? props.itemDetails.imagePaths[0]
-                  : ''
-              }
+                  props && props.itemDetails && props.itemDetails.imagePaths
+                    ? props.itemDetails.imagePaths[0]
+                    : ''
+                }
                 title="Breakfast cover"
               />
             </div>

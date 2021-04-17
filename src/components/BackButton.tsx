@@ -2,7 +2,7 @@ import React from 'react';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
-import { useHistory } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 
 interface IProps {
   header?: string;

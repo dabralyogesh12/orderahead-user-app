@@ -9,7 +9,7 @@ import {
   useTheme,
 } from '@material-ui/core/styles';
 import { Grid, Paper, Typography } from '@material-ui/core';
-import {useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -194,7 +194,7 @@ export default function OrderSent() {
               fullWidth
               variant="contained"
               color="primary"
-              onClick={() => history.push("/order")}
+              onClick={() => history.push('/order')}
             >
               Track Order
             </Button>
@@ -205,7 +205,7 @@ export default function OrderSent() {
               variant="outlined"
               disableElevation={true}
               color="primary"
-              onClick={() => history.push("/stall/:id")}
+              onClick={() => history.push('/stall/:id')}
             >
               New Order
             </Button>

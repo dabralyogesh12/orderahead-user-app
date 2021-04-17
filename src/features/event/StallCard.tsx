@@ -109,8 +109,7 @@ interface IProps extends WithStyles<typeof styles> {
   stall: IStall;
 }
 
-interface IState {
-}
+interface IState {}
 
 class StallCard extends React.Component<IProps, IState> {
   constructor(props: IProps) {
@@ -127,7 +126,12 @@ class StallCard extends React.Component<IProps, IState> {
             <Grid item className={classes.leftPane}>
               <img src={stall.logoImagePath} className={classes.stallImage} />
             </Grid>
-            <Grid item className={classes.rightPane} container direction="column">
+            <Grid
+              item
+              className={classes.rightPane}
+              container
+              direction="column"
+            >
               <Box className={classes.nameRow}>
                 <Box>
                   <Typography
@@ -140,7 +144,11 @@ class StallCard extends React.Component<IProps, IState> {
                 </Box>
                 <Box>
                   <img src="/img/star_icon.png" className={classes.starIcon} />
-                  <Typography roboto={true} variant="subtitle1" display="inline">
+                  <Typography
+                    roboto={true}
+                    variant="subtitle1"
+                    display="inline"
+                  >
                     {stall.rating}
                   </Typography>
                 </Box>
@@ -152,8 +160,15 @@ class StallCard extends React.Component<IProps, IState> {
                   <img src="/img/cookie.png" className={classes.coffeeIcon} />
                 </Box>
                 <Box>
-                  <img src="/img/distance.svg" className={classes.distanceIcon} />
-                  <Typography roboto={true} variant="subtitle1" display="inline">
+                  <img
+                    src="/img/distance.svg"
+                    className={classes.distanceIcon}
+                  />
+                  <Typography
+                    roboto={true}
+                    variant="subtitle1"
+                    display="inline"
+                  >
                     30ft
                   </Typography>
                 </Box>
