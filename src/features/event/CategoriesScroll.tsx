@@ -4,7 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
-import { WithStyles, withStyles, createStyles } from '@material-ui/core';
+import { createStyles, withStyles, WithStyles } from '@material-ui/core';
 import Typography from '../../Typography';
 
 import { theme as Theme } from '../../theme';
@@ -156,6 +156,7 @@ class CategoriesScroll extends React.Component<IProps, IState> {
 }
 
 export default withStyles(styles)(CategoriesScroll);
+
 interface TabPanelProps {
   children?: React.ReactNode;
   index: number;

@@ -2,12 +2,10 @@ import RootReducer from './rootReducer';
 import {
   cart,
   cartItem,
-  invoice,
   lineItems,
   menu,
   slotsInfo,
   stall,
-  checkoutstate,
 } from './data/testData';
 
 export type RootState = ReturnType<typeof RootReducer>;
@@ -35,11 +33,14 @@ export interface IPrice {
   amount: number;
   currency: string;
 }
+
 export type IMenu = typeof menu;
+
 export interface IDynamicSettings {
   requestedEta: number;
   requestedDynamicFee: IPrice;
 }
+
 export interface IVariation {
   name: string;
   price: IPrice;
@@ -47,6 +48,7 @@ export interface IVariation {
   status?: string;
   pointOfSaleInfo?: IPos;
 }
+
 export interface IItemDetail {
   name: string;
   description: string;

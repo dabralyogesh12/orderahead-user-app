@@ -1,16 +1,13 @@
 import {
-  Grid,
   Button,
   createStyles,
-  makeStyles,
-  Theme,
+  Grid,
   Hidden,
-  TextField,
-  Divider,
+  makeStyles,
   Paper,
+  Theme,
 } from '@material-ui/core';
 import React from 'react';
-import PhoneInput from 'react-phone-number-input';
 import { useHistory } from 'react-router-dom';
 import 'react-phone-number-input/style.css';
 import { BackButton } from './BackButton';

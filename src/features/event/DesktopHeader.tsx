@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useReducer } from 'react';
-import { fade, makeStyles, createStyles } from '@material-ui/core/styles';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useEffect, useReducer, useRef } from 'react';
+import { createStyles, fade, makeStyles } from '@material-ui/core/styles';
+import { useDispatch, useSelector } from 'react-redux';
 import DehazeIcon from '@material-ui/icons/Dehaze';
 import AppBar from '@material-ui/core/AppBar';
 import { Box } from '@material-ui/core';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
@@ -43,6 +43,7 @@ const getIcon = (props: StepIconProps) => {
   }
   return <FiberManualRecordIcon style={{ color: '#6D5CFF' }} />;
 };
+
 function ColorlibStepIcon(props: StepIconProps) {
   const classes = useColorlibStepIconStyles();
   const { active, completed } = props;
@@ -59,6 +60,7 @@ function ColorlibStepIcon(props: StepIconProps) {
     </div>
   );
 }
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {

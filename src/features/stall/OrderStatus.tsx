@@ -1,21 +1,19 @@
 import {
-  Grid,
   createStyles,
+  Divider,
+  Grid,
+  Hidden,
+  Link,
   makeStyles,
   Theme,
-  Hidden,
-  Divider,
-  Link,
 } from '@material-ui/core';
 import React from 'react';
-import Currency from 'react-currency-formatter';
 import { useParams } from 'react-router-dom';
 import format from 'date-fns/format';
 import StatusStepper from './StatusStepper';
 import Typography from '../../Typography';
 import API from '../../API';
-import { ILineItem, IOrder, IOrderItem } from '../../types';
-import { order1 } from '../../data/testData';
+import { IOrder, IOrderItem } from '../../types';
 import { GenerateFormattedAmount } from '../../utils';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -91,6 +89,7 @@ function constructDetailedReceipt(order: IOrder) {
     </Typography>
   );
 }
+
 function printVariationName(variationName: string, itemName: string): string {
   if (!variationName) {
     return '';

@@ -1,4 +1,4 @@
-import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import { GoogleApiWrapper, Map, Marker } from 'google-maps-react';
 import { connect } from 'react-redux';
 import React from 'react';
 import { RouteComponentProps } from 'react-router-dom';

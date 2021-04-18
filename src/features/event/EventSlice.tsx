@@ -1,7 +1,6 @@
 /* eslint no-param-reassign: 0 */ // --> OFF
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../types';
-import config from '../../config';
 
 export interface EventState {
   loading: boolean;

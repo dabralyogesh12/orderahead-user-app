@@ -1,16 +1,14 @@
 import {
-  Grid,
   createStyles,
-  makeStyles,
-  Theme,
-  TextField,
   Divider,
+  makeStyles,
+  TextField,
+  Theme,
 } from '@material-ui/core';
 import React from 'react';
 import PhoneInput from 'react-phone-number-input';
 import { useHistory } from 'react-router-dom';
 import 'react-phone-number-input/style.css';
-import { BackButton } from '../../components/BackButton';
 import Typography from '../../Typography';
 import '../style/style.css';
 import { TransitionScreen } from '../../components/TransitionScreen';
@@ -39,9 +37,11 @@ export const OrderConfirmation = () => {
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
   };
+
   function ctaActionHandler() {
     history.push('/stall/order/sent');
   }
+
   const title = 'Order Confirmation';
   const notificationMessage =
     'Your order will be ready 2 minutes after confirmation';

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './App.scss';
-import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import config from 'react-global-configuration';
 import { SnackbarProvider } from 'notistack';
-import { WithStyles, withStyles, createStyles } from '@material-ui/core';
+import { createStyles, withStyles, WithStyles } from '@material-ui/core';
 import { theme as Theme } from './theme';
 import Cart from './features/cart/Cart';
 import configuration from './config';
@@ -46,6 +46,7 @@ const styles = (theme: typeof Theme) =>
 interface IState {
   width: number;
 }
+
 interface IProps extends WithStyles<typeof styles> {}
 
 class App extends Component<IProps, IState> {

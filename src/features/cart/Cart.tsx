@@ -1,15 +1,14 @@
 /* eslint no-param-reassign: 0 */ // --> OFF
-import React, { LegacyRef, RefObject } from 'react';
+import React, { RefObject } from 'react';
 import { connect } from 'react-redux';
 import config from 'react-global-configuration';
 import { Redirect, RouteComponentProps, withRouter } from 'react-router-dom';
-import get from 'lodash/get';
 import {
+  Button,
   createStyles,
-  WithStyles,
   Grid,
   withStyles,
-  Button,
+  WithStyles,
 } from '@material-ui/core';
 import { createShoppingCart } from './CartSlice';
 import { createAppConfigState, createStallState, isDesktop } from '../../utils';
@@ -18,14 +17,7 @@ import { PickupOptions } from './PickupOptions';
 import { Invoice } from './Invoice';
 import { DateModal } from './DateModal';
 import { CutleryCoupon } from './CutleryCoupon';
-import {
-  ICart,
-  IDynamicSettings,
-  IInvoice,
-  IPrice,
-  IStall,
-  RootState,
-} from '../../types';
+import { ICart, IInvoice, IPrice, IStall, RootState } from '../../types';
 import { AppDispatch } from '../../store';
 import { theme as Theme } from '../../theme';
 import CartHeader from './CartHeader';
@@ -103,6 +95,7 @@ interface IProps extends WithStyles<typeof styles>, RouteComponentProps {
   stall: IStall;
   rhState: () => {};
 }
+
 interface IState {
   mode?: string;
   showModal: boolean;
