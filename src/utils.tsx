@@ -1,8 +1,10 @@
 import React from 'react';
 import NumberFormat from 'react-number-format';
 import getSymbolFromCurrency from 'currency-symbol-map';
+import Currency from 'react-currency-formatter';
 import { IMenu, IPrice, ICartItem, IStall } from './types';
 import { appConfig, invoice, stall as StallData } from './data/testData';
+import Typography from './Typography';
 
 const greyedDollar = () => (
   <span
@@ -76,6 +78,10 @@ export function CalculateLineItemTotal(cartItem: ICartItem) {
     currency: cartItem.selectedVariation.price.currency,
   };
 }
+
+export const GenerateFormattedAmount = (amount: IPrice) => (
+  <Currency quantity={amount.amount / 100} currency={amount.currency} />
+);
 
 export const GenerateWaitTime = (time: number) =>
   Math.round(time / (1000 * 60));

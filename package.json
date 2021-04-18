@@ -86,9 +86,16 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run isready",
+      "pre-commit": "lint-staged",
       "pre-push": "npm run isready"
     }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css}": [
+      "prettier --write",
+      "npm run lint",
+      "git add"
+    ]
   },
   "devDependencies": {
     "@types/googlemaps": "^3.43.3",

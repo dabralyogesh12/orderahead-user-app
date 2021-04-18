@@ -100,7 +100,7 @@ class App extends Component<IProps, IState> {
                 component={OrderConfirmation}
               />
               <Route exact path="/stall/order/sent" component={OrderSent} />
-              <Route exact path="/order" component={OrderStatus} />
+              <Route exact path="/order/:orderId?" component={OrderStatus} />
               <Route exact path="/map" component={MapView} />
               <Route path="/" component={Event} />
             </Switch>
