@@ -131,3 +131,8 @@ export interface IOrder {
   pickupTime: string;
   pickupLocation?: string;
 }
+
+export interface ICreateOrderEventHandlerParam {
+  source: string;
+  paymentMethod: string;
+}

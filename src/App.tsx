@@ -16,6 +16,7 @@ import MapView from './features/event/MapView';
 import { OrderStatus } from './features/stall/OrderStatus';
 import { OrderConfirmation } from './features/stall/OrderConfirmation';
 import { MenuItem } from './features/stall/MenuItem';
+import { Payment } from './features/stall/Payment';
 
 config.set(configuration, { assign: false, freeze: false });
 
@@ -100,6 +101,7 @@ class App extends Component<IProps, IState> {
                 path="/stall/order/confirmation"
                 component={OrderConfirmation}
               />
+              <Route exact path="/payment" component={Payment} />
               <Route exact path="/stall/order/sent" component={OrderSent} />
               <Route exact path="/order/:orderId?" component={OrderStatus} />
               <Route exact path="/map" component={MapView} />

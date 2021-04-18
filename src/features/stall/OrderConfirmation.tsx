@@ -66,6 +66,7 @@ export const OrderConfirmation = () => {
           id="outlined-basic"
           variant="outlined"
           fullWidth
+          type="name"
           className={classes.namefield}
         />
       </div>

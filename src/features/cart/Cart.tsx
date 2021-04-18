@@ -260,9 +260,7 @@ class Cart extends React.Component<IProps, IState> {
                 style={{
                   width: this.bodyWrapper!.current!.offsetWidth,
                 }}
-                onClick={() =>
-                  this.props.history.push('/stall/order/confirmation')
-                }
+                onClick={() => this.props.history.push('/payment')}
               >
                 <Typography variant="button" roboto={true}>
                   Proceed to Checkout

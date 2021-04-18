@@ -1,16 +1,16 @@
+import './SquarePayment.scss';
 import React, { Component } from 'react';
-import get from 'lodash/get';
 import config from 'react-global-configuration';
 import { isSafari } from 'react-device-detect';
+import { Box, Grid } from '@material-ui/core';
 import { loadScript } from '../utils';
-import { IInvoice, IStall } from '../types';
+import { ICreateOrderEventHandlerParam } from '../types';
 
 interface IProps {
-  invoice: IInvoice;
+  amount: number;
   showLoading: boolean;
-  stall: IStall;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  handleCreateOrder: (arg0: any) => void;
+  squareLocationId: string;
+  handleCreateOrder: (arg0: ICreateOrderEventHandlerParam) => void;
 }
 
 interface IState {
@@ -39,7 +39,7 @@ class SquarePayment extends Component<IProps, IState> {
         // Initialize the payment form elements
         applicationId: config.get('square_app_id'),
         // from AWS dynamo DB square_venue_info table.
-        locationId: this.props.stall.pointOfSaleInfo.squareInfo.locationId,
+        locationId: this.props.squareLocationId,
         inputClass: 'sq-input',
         autoBuild: false,
         // Customize the CSS for SqPaymentForm iframe elements
@@ -100,9 +100,7 @@ class SquarePayment extends Component<IProps, IState> {
             });
           },
           createPaymentRequest: () => {
-            const cost = (
-              get(this.props.invoice, 'total.amount', 0) / 100
-            ).toFixed(2);
+            const cost = this.props.amount.toFixed(2);
             return {
               requestShippingAddress: false,
               requestBillingInfo: true,
@@ -183,9 +181,11 @@ class SquarePayment extends Component<IProps, IState> {
       !this.state.applePaySupported &&
       isSafari; /* Gpay is not added for Safari */
     return this.state.paymentObject ? (
-      <div style={{ height: '420px' }}>
-        <div
-          id="form-container"
+      <Grid container>
+        <Grid
+          item
+          xs={12}
+          lg={12}
           style={{ display: this.state.showPaymentOptions ? 'block' : 'none' }}
         >
           <div id="sq-walletbox">
@@ -249,13 +249,16 @@ class SquarePayment extends Component<IProps, IState> {
             <div className="third" id="sq-cvv" />
             <div className="third" id="sq-postal-code" />
           </div>
-        </div>
+        </Grid>
+
         {this.state.showPaymentOptions ? (
           ''
         ) : (
-          <img src="/img/ajax-loader.gif" alt="loading gif" />
+          <Grid item xs={12} lg={12} style={{ textAlign: 'center' }}>
+            <img src="/img/ajax-loader.gif" alt="loading gif" />
+          </Grid>
         )}
-      </div>
+      </Grid>
     ) : (
       ''
     );

@@ -74,8 +74,8 @@ const useStyles = makeStyles((theme: Theme) =>
 interface IProps {
   notificationMessage: JSX.Element | string;
   title: string;
-  children: JSX.Element[];
-  actionButtonCta: string;
+  children: JSX.Element[] | JSX.Element;
+  actionButtonCta: JSX.Element | string;
   ctaActionHandler: Function;
   rightBannerImage: string;
 }
