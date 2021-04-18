@@ -86,8 +86,7 @@ const styles = (theme: typeof Theme) =>
       bottom: '35px',
     },
     leftPane: {
-      overflow: 'scroll',
-      paddingBottom: '100px',
+      paddingBottom: '23vh',
     },
     rightPane: {},
     cartRoot: {},
