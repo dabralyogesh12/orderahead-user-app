@@ -133,7 +133,9 @@ export default function StatusStepper(props: IProps) {
     (update) => update.newStatus === props.activeStatus
   );
   const steps = props.updates
-    .filter((x, index) => index <= activeStep)
+    .filter(
+      (update, index) => update.type === 'STATUS_CHANGE' && index <= activeStep
+    )
     .map((update, index) => renderOrderStatus(update.newStatus));
 
   return (

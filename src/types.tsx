@@ -86,6 +86,8 @@ export type IFulFillmentInfo = {
   customer: IUserInfo;
 };
 
+export type IOrderUpdateType = 'STATUS_CHANGE' | 'NOTIFY_CUSTOMER';
+
 export type IOrderItem = {
   name: string;
   quantity: number;
@@ -95,7 +97,7 @@ export type IOrderItem = {
 
 export type IUpdate = {
   timestamp: number;
-  type: string;
+  type: IOrderUpdateType;
   newStatus: IOrderStatus;
   oldStatus: IOrderStatus;
 };
