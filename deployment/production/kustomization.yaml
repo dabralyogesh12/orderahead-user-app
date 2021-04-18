@@ -13,7 +13,7 @@ configMapGenerator:
 images:
 - name: teamsleek/sleek-orderahead-user-app
   newName: teamsleek/sleek-orderahead-user-app
-  newTag: sha-2307752
+  newTag: sha-d295985
 
 patchesJson6902:
 - path: ingress-host-setup.yaml
