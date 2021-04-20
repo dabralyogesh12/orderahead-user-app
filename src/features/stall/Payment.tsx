@@ -26,7 +26,7 @@ export const Payment = () => {
     history.push('/stall/order/confirmation');
   }
 
-  const title = 'Choose a Payment method';
+  const title = 'Payment method';
   const notificationMessage = '';
   const actionButtonCta = paymentInProgress ? 'Processing...' : 'Pay';
   const rightBannerImage = '/img/OrderConfirm.png';

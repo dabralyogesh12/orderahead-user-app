@@ -17,6 +17,7 @@ import { OrderStatus } from './features/stall/OrderStatus';
 import { OrderConfirmation } from './features/stall/OrderConfirmation';
 import { MenuItem } from './features/stall/MenuItem';
 import { Payment } from './features/stall/Payment';
+import ScrollToTop from './ScrollToTop';
 
 config.set(configuration, { assign: false, freeze: false });
 
@@ -89,6 +90,7 @@ class App extends Component<IProps, IState> {
         >
           {/* @ts-ignore */}
           <Router>
+            <ScrollToTop />
             <Switch>
               <Route exact path="/event" component={Event} />
               <Route exact path="/search_view" component={SearchView} />
