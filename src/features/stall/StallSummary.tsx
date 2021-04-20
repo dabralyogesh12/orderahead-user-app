@@ -84,7 +84,7 @@ export const StallSummary = (props: IProps) => {
               width="12px"
               alt="rating icon"
             />{' '}
-            4.6 <img src="/img/Vector.svg" alt="rating icon" />
+            {props.rating} <img src="/img/Vector.svg" alt="rating icon" />
             50ft
           </Typography>
         </div>

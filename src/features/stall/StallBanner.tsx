@@ -40,8 +40,8 @@ export const StallBanner = (props: IProps) => {
       <img src={props.bannerImage} className={classes.stallImg} alt="" />
       {props.callingParent === 'StallMenu' ? (
         <StallSummary
-          stallName="Costa Coffee"
-          rating={4.6}
+          stallName={props && props.stallName ? props.stallName : ''}
+          rating={props && props.rating ? props.rating : 0}
           type={['Coffee', 'Desert']}
           distance={51}
         />

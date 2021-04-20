@@ -6,12 +6,14 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { CardActionArea, Grid } from '@material-ui/core';
+import { ItemCardPrice } from './ItemCardPrice';
 
 import { IItemDetail } from '../../types';
 import SleekLink from '../../components/SleekLink';
 
 interface IProps {
   itemDetails: IItemDetail;
+  logo: string;
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -54,6 +56,7 @@ const useStyles = makeStyles((theme: Theme) =>
       borderRadius: '4px',
     },
     itemDescription: {
+      marginTop: theme.spacing(0.4),
       overflow: 'hidden',
       textOverflow: 'ellipsis',
       display: '-webkit-box',
@@ -101,7 +104,7 @@ export default function ItemCard(props: IProps) {
                 image={
                   props && props.itemDetails && props.itemDetails.imagePaths
                     ? props.itemDetails.imagePaths[0]
-                    : ''
+                    : props.logo
                 }
                 title="Breakfast cover"
               />
@@ -128,7 +131,7 @@ export default function ItemCard(props: IProps) {
                   component="div"
                   style={{ fontWeight: 700, marginTop: 'auto' }}
                 >
-                  $6
+                  <ItemCardPrice itemDetails={props.itemDetails} />
                 </Typography>
               </CardContent>
             </div>

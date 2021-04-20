@@ -75,11 +75,12 @@ const styles = (theme: typeof Theme) =>
 interface IProps extends WithStyles<typeof styles> {
   eventRef: React.RefObject<HTMLInputElement>;
   callingParent?: string;
+  categories?: { name: string; image?: string }[];
 }
 
 interface IState {
   value: number;
-  categories: { name: string; image: string }[];
+  categories: { name: string; image?: string }[];
 }
 
 class CategoriesScroll extends React.Component<IProps, IState> {
@@ -87,7 +88,7 @@ class CategoriesScroll extends React.Component<IProps, IState> {
     super(props);
     this.state = {
       value: 0,
-      categories: getCategories(),
+      categories: props && props.categories ? props.categories : [],
     };
   }
 

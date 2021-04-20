@@ -56,7 +56,7 @@ export const StallHeader = (props: IProps) => {
         </Typography>
       </Grid>
       <Grid item xs={4} className={classes.headerItem}>
-        <img src={props.logo} alt="Stall Logo" />
+        <img src={props.logo} alt="Stall Logo" height="80px" />
       </Grid>
       <Grid item xs={4} className={classes.headerItem}>
         <Typography roboto color="error" component="div">
